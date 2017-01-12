@@ -2,6 +2,8 @@ package worksheet_02;
 
 import static org.junit.Assert.*;
 
+import java.lang.reflect.Constructor;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -26,5 +28,9 @@ public class ClassReaderTest {
 	@Test public void testGetModifiers() throws ClassNotFoundException {
 		assertEquals(ClassReader.getModifiers(inputClass), 17);
 	}
-	
+
+	@Test public void testGetConstructor() throws ClassNotFoundException {
+		Constructor[] result = inputClass.getConstructors();
+		assertEquals(ClassReader.getModifiers(inputClass), 17);
+	}
 }
