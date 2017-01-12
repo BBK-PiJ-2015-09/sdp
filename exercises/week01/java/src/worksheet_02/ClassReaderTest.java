@@ -3,6 +3,7 @@ package worksheet_02;
 import static org.junit.Assert.*;
 
 import java.lang.reflect.Constructor;
+import java.lang.reflect.Method;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -31,6 +32,11 @@ public class ClassReaderTest {
 
 	@Test public void testGetConstructor() throws ClassNotFoundException {
 		Constructor[] result = inputClass.getConstructors();
-		assertEquals(ClassReader.getModifiers(inputClass), 17);
+		assertArrayEquals(ClassReader.getConstructors(inputClass), result);
+	}
+	
+	@Test public void testGetMethods() throws ClassNotFoundException {
+		Method[] result = inputClass.getMethods();
+		assertArrayEquals(ClassReader.getMethods(inputClass), result);
 	}
 }
