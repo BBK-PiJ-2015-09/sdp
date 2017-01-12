@@ -2,6 +2,8 @@ package worksheet_02;
 
 import static org.junit.Assert.*;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -20,7 +22,19 @@ public class ClassReaderTest {
 	}
 	
 	@Test public void testPrintClass() throws ClassNotFoundException {
+		// Setup.
+		final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+		final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(outContent));
+	    System.setErr(new PrintStream(errContent));
+	    
+	    // Test.
 		ClassReader.printClass(input);
+		assert(outContent.toString().length() > 0);
+		
+		// Teardown.
+	    System.setOut(null);
+	    System.setErr(null);
 	}
 
 	@Test public void testGetSimpleName() throws ClassNotFoundException {
