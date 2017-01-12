@@ -2,6 +2,7 @@ package worksheet_02;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -19,6 +20,9 @@ public class ClassReader {
 		
 		String simpleName = inputClass.getSimpleName();
 		System.out.println("Simple class name: " + simpleName);
+        
+		int modifiers = inputClass.getModifiers();
+        System.out.println("Modifiers: " + modifiers);
 		
         Constructor[] constructors = inputClass.getConstructors();
         System.out.println("Constructors: " + Arrays.toString(constructors));
