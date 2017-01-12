@@ -1,6 +1,7 @@
 package worksheet_02;
 
 import java.lang.reflect.Constructor;
+import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -22,6 +23,9 @@ public class ClassReader {
         Constructor[] constructors = inputClass.getConstructors();
         System.out.println("Constructors: " + Arrays.toString(constructors));
 		
+        Method[] methods = inputClass.getMethods();
+        System.out.println("Methods: " + Arrays.toString(methods));
+
 	}
 	
 }
