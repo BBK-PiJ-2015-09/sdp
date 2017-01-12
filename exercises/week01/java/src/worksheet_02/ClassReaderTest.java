@@ -7,13 +7,21 @@ import org.junit.Test;
 public class ClassReaderTest {
 
 	@Test
-	public void testprintClass() throws ClassNotFoundException {
+	public void testPrintClass() throws ClassNotFoundException {
 		String input = "java.lang.String";
 		ClassReader.printClass(input);
 	}
 
 	@Test
-	public void testgetModifiers() throws ClassNotFoundException {
+	public void testGetSimpleName() throws ClassNotFoundException {
+		String input = "java.lang.String";
+		Class inputClass = Class.forName(input);
+
+		assertEquals(ClassReader.getSimpleName(inputClass), "String");
+	}
+	
+	@Test
+	public void testGetModifiers() throws ClassNotFoundException {
 		String input = "java.lang.String";
 		Class inputClass = Class.forName(input);
 

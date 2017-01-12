@@ -18,8 +18,7 @@ public class ClassReader {
 	public static void printClass(String input) throws ClassNotFoundException {
 		Class inputClass = Class.forName(input);
 		
-		String simpleName = inputClass.getSimpleName();
-		System.out.println("Simple class name: " + simpleName);
+		System.out.println("Simple class name: " + getSimpleName(inputClass));
         
         System.out.println("Modifiers: " + getModifiers(inputClass));
 		
@@ -31,8 +30,11 @@ public class ClassReader {
 
 	}
 	
+	public static String getSimpleName(Class inputClass) {
+		return inputClass.getSimpleName();
+	}
+	
 	public static int getModifiers(Class inputClass) {
 		return inputClass.getModifiers();
 	}
-	
 }
