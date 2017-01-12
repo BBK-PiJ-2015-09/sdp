@@ -9,16 +9,22 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class ClassReaderTest {
 	
 	Class inputClass;
 	String input;
-	
+
 	@Before public void setup() throws ClassNotFoundException {
 		input = "java.lang.String";
 		inputClass = Class.forName(input);
+	}
+
+	@Test public void consolePrintClass() throws ClassNotFoundException {
+		// Print output to console for development purposes.
+		ClassReader.printClass(input);
 	}
 	
 	@Test public void testPrintClass() throws ClassNotFoundException {
