@@ -1,6 +1,6 @@
 package worksheet_01;
 
-public class Storage {
+class Storage<T> {
 	T x;
 	
 	public void setValue(T value) {

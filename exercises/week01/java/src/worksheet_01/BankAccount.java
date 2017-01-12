@@ -1,6 +1,6 @@
 package worksheet_01;
 
-public class BankAccount {
+class BankAccount {
 	private float balance;
 	
 	public void deposit(float amount) {
