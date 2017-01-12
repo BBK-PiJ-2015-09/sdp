@@ -13,15 +13,13 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class ClassBuilderTest {
-	Class inputClass;
 	String input;
 	
 	@Before public void setup() throws ClassNotFoundException {
 		input = "java.lang.String";
-		inputClass = Class.forName(input);
 	}
 
-	@Test public void consolePrintClass() throws ClassNotFoundException {
+	@Test public void testBuildClass() throws ClassNotFoundException {
 		ClassBuilder.buildClass(input);
 	}
 	
