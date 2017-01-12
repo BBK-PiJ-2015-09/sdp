@@ -22,7 +22,6 @@ public class ClassBuilderTest {
 	}
 
 	@Test public void consolePrintClass() throws ClassNotFoundException {
-		// Print output to console for development purposes.
 		ClassBuilder.buildClass(input);
 	}
 	
