@@ -20,7 +20,7 @@ public class ClassReaderTest {
 	
 	@Before public void setup() throws ClassNotFoundException {
 		input = "java.lang.String";
-		inputs = new String[]{"java.lang.String", "java.lang.System", "worksheet_02.ClassReader"};
+		inputs = new String[]{"worksheet_02.ClassReader", "java.lang.String", "java.lang.System", "javax.accessibility.AccessibleStreamable", "org.omg.PortableServer.AdapterActivatorOperations"};
 		inputClass = Class.forName(input);
 	}
 
