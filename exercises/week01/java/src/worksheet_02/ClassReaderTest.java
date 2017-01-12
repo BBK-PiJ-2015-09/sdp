@@ -3,6 +3,7 @@ package worksheet_02;
 import static org.junit.Assert.*;
 
 import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 import org.junit.Before;
@@ -39,4 +40,10 @@ public class ClassReaderTest {
 		Method[] result = inputClass.getMethods();
 		assertArrayEquals(ClassReader.getMethods(inputClass), result);
 	}
+	
+	@Test public void getFields() throws ClassNotFoundException {
+		Field[] result = inputClass.getFields();
+		assertArrayEquals(ClassReader.getFields(inputClass), result);
+	}
+	
 }
