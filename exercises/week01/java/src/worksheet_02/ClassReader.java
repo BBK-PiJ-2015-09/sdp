@@ -9,6 +9,11 @@ public class ClassReader {
 		Scanner s = new Scanner(System.in);
 		System.out.println("Please enter a class name:");
 		String input = s.next();
+		printClass(input);
+		s.close();
+	}
+	
+	public static void printClass(String input) throws ClassNotFoundException {
 		Class inputClass = Class.forName(input);
 		
 		String simpleName = inputClass.getSimpleName();
@@ -17,6 +22,6 @@ public class ClassReader {
         Constructor[] constructors = inputClass.getConstructors();
         System.out.println("Constructors: " + Arrays.toString(constructors));
 		
-		s.close();
 	}
+	
 }
