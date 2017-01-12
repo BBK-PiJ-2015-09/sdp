@@ -21,8 +21,7 @@ public class ClassReader {
 		String simpleName = inputClass.getSimpleName();
 		System.out.println("Simple class name: " + simpleName);
         
-		int modifiers = inputClass.getModifiers();
-        System.out.println("Modifiers: " + modifiers);
+        System.out.println("Modifiers: " + getModifiers(inputClass));
 		
         Constructor[] constructors = inputClass.getConstructors();
         System.out.println("Constructors: " + Arrays.toString(constructors));
@@ -30,6 +29,10 @@ public class ClassReader {
         Method[] methods = inputClass.getMethods();
         System.out.println("Methods: " + Arrays.toString(methods));
 
+	}
+	
+	public static int getModifiers(Class inputClass) {
+		return inputClass.getModifiers();
 	}
 	
 }
