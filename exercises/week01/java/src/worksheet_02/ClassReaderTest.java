@@ -16,31 +16,19 @@ public class ClassReaderTest {
 	
 	Class inputClass;
 	String input;
-
+	String[] inputs;
+	
 	@Before public void setup() throws ClassNotFoundException {
 		input = "java.lang.String";
+		inputs = new String[]{"java.lang.String", "java.lang.System"};
 		inputClass = Class.forName(input);
 	}
 
 	@Test public void consolePrintClass() throws ClassNotFoundException {
-		// Print output to console for development purposes.
-		ClassReader.printClass(input);
-	}
-	
-	@Test public void testPrintClass() throws ClassNotFoundException {
-		// Setup.
-		final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-		final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
-		System.setOut(new PrintStream(outContent));
-	    System.setErr(new PrintStream(errContent));
-	    
-	    // Test.
-		ClassReader.printClass(input);
-		assert(outContent.toString().length() > 0);
-		
-		// Teardown.
-	    System.setOut(null);
-	    System.setErr(null);
+		// Print outputs to console for development purposes.
+		for(int i = 0; i < inputs.length; i++) {
+			ClassReader.printClass(inputs[i]);
+		}
 	}
 
 	@Test public void testGetSimpleName() throws ClassNotFoundException {
