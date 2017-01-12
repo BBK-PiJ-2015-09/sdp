@@ -14,13 +14,15 @@ import org.junit.Test;
 
 public class ClassBuilderTest {
 	String input;
+	char[] args;
 	
 	@Before public void setup() throws ClassNotFoundException {
 		input = "java.lang.String";
+		args = new char[]{'H','e','l','l','o', 'w', 'o', 'r', 'l', 'd', '!'};
 	}
 
 	@Test public void testBuildClass() throws ClassNotFoundException {
-		ClassBuilder.buildClass(input);
+		assertEquals("Hello world!", ClassBuilder.buildClass(input, args));
 	}
 	
 }

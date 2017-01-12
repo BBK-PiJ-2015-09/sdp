@@ -1,5 +1,9 @@
 package worksheet_02;
 
+import java.lang.reflect.Constructor;
+import java.util.Arrays;
+import java.util.Scanner;
+
 public class ClassBuilder {
 	public static void main(String[] args) {
 		Scanner s = new Scanner(System.in);
@@ -9,7 +13,13 @@ public class ClassBuilder {
 		s.close();
 	}
 	
-	public static void buildClass(String input) throws ClassNotFoundException {
+	public static String buildClass(String input, char[] args) throws ClassNotFoundException {
 		Class inputClass = Class.forName(input);
+		Constructor[] constructors = inputClass.getConstructors();
+		System.out.println("Constructors: " + Arrays.toString(constructors));
+		// Get the relevant constructor.
+		// Call it on inputClass with the args.
+//		inputClass.newInstance();
+		return "";
 	}
 }
