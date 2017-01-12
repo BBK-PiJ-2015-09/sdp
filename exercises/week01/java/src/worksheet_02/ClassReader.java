@@ -1,6 +1,7 @@
 package worksheet_02;
 
 import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.Arrays;
@@ -25,6 +26,8 @@ public class ClassReader {
         System.out.println("Constructors: " + Arrays.toString(getConstructors(inputClass)));
 		
         System.out.println("Methods: " + Arrays.toString(getMethods(inputClass)));
+        
+        System.out.println("Fields: " + Arrays.toString(getFields(inputClass)));
 
 	}
 	
@@ -42,5 +45,9 @@ public class ClassReader {
 	
 	public static Method[] getMethods(Class inputClass) {
 		return inputClass.getMethods();
+	}
+	
+	public static Field[] getFields(Class inputClass) {
+		return inputClass.getFields();
 	}
 }
