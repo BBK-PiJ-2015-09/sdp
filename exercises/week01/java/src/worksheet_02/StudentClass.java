@@ -1,10 +1,9 @@
 package worksheet_02;
 
 public class StudentClass {
-	public String a;
-	public String b;
-	public String c;
-	public String d;
-
-
+	private String a;
+	private String b;
+	private String c;
+	private String d;
+	private String e;
 }
