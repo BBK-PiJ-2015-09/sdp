@@ -9,22 +9,24 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class StudentClassTest {
-	StudentClass sclass;
+	Class sclass;
 	Field[] fields;
 	
 	@Before 
 	public void setup() {
-		sclass = new StudentClass();
-		fields = sclass.getClass().getFields();
+		sclass = new StudentClass().getClass();
+		
 	}
 	
 	@Test
 	public void testMaxFourFields() {
+		fields = sclass.getDeclaredFields();
 		assertTrue(fields.length <= 4);
 	}
 
 	@Test
 	public void testAllFieldsPrivate() {
+		fields = sclass.getFields();
 		assertTrue(sclass.getClass().getFields().length == 0);
 	}
 	

@@ -5,5 +5,4 @@ public class StudentClass {
 	private String b;
 	private String c;
 	private String d;
-	private String e;
 }
