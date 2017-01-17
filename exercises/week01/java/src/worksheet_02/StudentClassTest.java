@@ -27,7 +27,7 @@ public class StudentClassTest {
 	@Test
 	public void testAllFieldsPrivate() {
 		fields = sclass.getFields();
-		assertTrue(sclass.getClass().getFields().length == 0);
+		assertTrue(fields.length == 0);
 	}
 	
 }
