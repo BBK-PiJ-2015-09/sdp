@@ -5,7 +5,7 @@ object Readline {
   def main(args: Array[String]): Unit = {
     print("Please enter an even number: ")
     var input = readLine().toInt
-    println("Thank you, half of your number is: " + 34input / 2)
+    println("Thank you, half of your number is: " + input / 2)
   }
 
 }
