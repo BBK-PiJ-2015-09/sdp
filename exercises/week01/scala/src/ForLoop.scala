@@ -1,5 +1,3 @@
-import scala.io.StdIn.readLine
-
 object ForLoop {
 
   def main(args: Array[String]): Unit = {
@@ -7,7 +5,7 @@ object ForLoop {
     var i = 0
 
     for(i <- 1 to 25) {
-      println(i)
+      println(i + " " + (i * i) + " " + (i * i * i))
     }
 
   }
