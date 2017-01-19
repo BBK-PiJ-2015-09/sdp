@@ -1,3 +1,5 @@
+import scala.io.StdIn.readLine
+
 object Hammurabi extends App {
 
   hammurabi()
@@ -15,6 +17,7 @@ object Hammurabi extends App {
     var plagueDeaths = 0
 
     printIntroductoryMessage()
+    readInt("Please enter a number: ")
 
     var i = 0
     for(i <- 1 to 10) {
@@ -34,6 +37,16 @@ object Hammurabi extends App {
       )
     }
 
+  }
+
+  def readInt(message: String): Int = {
+    try {
+      readLine(message).toInt
+    } catch {
+      case _: Throwable =>
+        println("That’s not an integer. Please enter an integer.")
+        readInt(message)
+    }
   }
 
   def printIntroductoryMessage(): Unit = {
