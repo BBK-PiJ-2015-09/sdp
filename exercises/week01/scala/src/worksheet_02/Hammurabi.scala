@@ -1,6 +1,10 @@
 object Hammurabi extends App {
 
-  printIntroductoryMessage()
+  hammurabi()
+
+  def hammurabi(): Unit = {
+    printIntroductoryMessage()
+  }
 
   def printIntroductoryMessage(): Unit = {
     println(
