@@ -1,3 +1,5 @@
+package worksheet_01
+
 object Sum {
 
   def main(args: Array[String]): Unit = {

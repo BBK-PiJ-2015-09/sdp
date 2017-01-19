@@ -1,4 +1,6 @@
-import scala.io.StdIn.{readLine,readInt}
+package worksheet_01
+
+import scala.io.StdIn.readLine
 
 object Readline {
 

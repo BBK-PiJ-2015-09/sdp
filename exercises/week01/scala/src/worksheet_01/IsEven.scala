@@ -1,3 +1,5 @@
+package worksheet_01
+
 import scala.io.StdIn.readLine
 
 object IsEven {
