@@ -3,6 +3,17 @@ object Hammurabi extends App {
   hammurabi()
 
   def hammurabi(): Unit = {
+    var starved = 0 // how many people starved
+    var immigrants = 5 // how many people came to the city
+    var population = 100
+    var harvest = 3000 // total bushels harvested
+    var bushelsPerAcre = 3 // amount harvested for each acre planted
+    var rats_ate = 200 // bushels destroyed by rats
+    var bushelsInStorage = 2800
+    var acresOwned = 1000
+    var pricePerAcre = 19 // each acre costs this many bushels
+    var plagueDeaths = 0
+
     printIntroductoryMessage()
   }
 
