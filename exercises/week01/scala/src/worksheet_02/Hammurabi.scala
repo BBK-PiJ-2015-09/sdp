@@ -19,20 +19,23 @@ object Hammurabi extends App {
   }
 
   def printReport(): Unit = {
-    println(
-      """
-        |O great Hammurabi!
-        |You are in year 1 of your ten year rule.
-        |In the previous year 0 people starved to death.
-        |In the previous year 5 people entered the kingdom.
-        |The population is now 100.
-        |We harvested 3000 bushels at 3 bushels per acre.
-        |Rats destroyed 200 bushels, leaving 2800 bushels in storage.
-        |The city owns 1000 acres of land.
-        |Land is currently worth 19 bushels per acre.
-        |There were 0 deaths from the plague.
-      """.stripMargin
-    )
+    var i = 0
+    for(i <- 1 to 10) {
+      println(
+        s"""
+          |O great Hammurabi!
+          |You are in year $i of your ten year rule.
+          |In the previous year 0 people starved to death.
+          |In the previous year 5 people entered the kingdom.
+          |The population is now 100.
+          |We harvested 3000 bushels at 3 bushels per acre.
+          |Rats destroyed 200 bushels, leaving 2800 bushels in storage.
+          |The city owns 1000 acres of land.
+          |Land is currently worth 19 bushels per acre.
+          |There were 0 deaths from the plague.
+        """.stripMargin
+      )
+    }
   }
 
   def printIntroductoryMessage(): Unit = {
