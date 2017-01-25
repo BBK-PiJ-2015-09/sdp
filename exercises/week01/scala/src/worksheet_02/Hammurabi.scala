@@ -45,6 +45,9 @@ object Hammurabi extends App {
         bushelsInStorage = bushelsInStorage + (acresToSell * pricePerAcre)
       }
 
+      var grainToFeed = askHowMuchGrainToFeed(bushelsInStorage)
+      bushelsInStorage = bushelsInStorage - grainToFeed
+
     }
 
   }
@@ -65,6 +68,15 @@ object Hammurabi extends App {
       acresToSell = readInt("How many acres will you sell?? ")
     }
     acresToSell
+  }
+
+  def askHowMuchGrainToFeed(bushels: Int) = {
+    var grainToFeed = readInt("How much grain will you feed to the people? ")
+    while (grainToFeed < 0 || grainToFeed > bushels) {
+      println("O Great Hammurabi, we have but " + bushels + " bushels of grain!")
+      grainToFeed = readInt("How much grain will you feed to the people?? ")
+    }
+    grainToFeed
   }
 
   def readInt(message: String): Int = {
