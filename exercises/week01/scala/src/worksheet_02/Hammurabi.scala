@@ -1,4 +1,5 @@
 import scala.io.StdIn.readLine
+import scala.util.Random
 
 object Hammurabi extends App {
 
@@ -20,6 +21,7 @@ object Hammurabi extends App {
 
     var i = 0
     for(i <- 1 to 10) {
+
       println(
         s"""
            |O great Hammurabi!
@@ -35,6 +37,7 @@ object Hammurabi extends App {
         """.stripMargin
       )
 
+      // Collect user input.
       var acresToBuy = askHowMuchLandToBuy(bushelsInStorage, pricePerAcre)
       acresOwned = acresOwned + acresToBuy
       bushelsInStorage = bushelsInStorage - (acresToBuy * pricePerAcre)
@@ -49,6 +52,14 @@ object Hammurabi extends App {
       bushelsInStorage = bushelsInStorage - grainToFeed
 
       var acresToPlant = askHowManyAcresToPlant(acresOwned)
+
+      // Determine consequences.
+      if (random(15)) {
+        plagueDeaths = population / 2
+        population = population - plagueDeaths
+      } else {
+        plagueDeaths = 0
+      }
 
     }
 
@@ -90,6 +101,13 @@ object Hammurabi extends App {
     acresToPlant
   }
 
+  def random(chance: Int) = {
+    if (Random.nextInt(100) < chance) {
+      true
+    } else {
+      false
+    }
+  }
 
   def readInt(message: String): Int = {
     try {
