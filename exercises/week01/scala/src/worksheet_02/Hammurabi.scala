@@ -87,6 +87,13 @@ object Hammurabi extends App {
         } else {
           immigrants = 0
         }
+        population = population + immigrants
+
+        var yieldInt =  Random.nextInt(8) + 1
+        println("yieldInt is: " + yieldInt)
+        bushelsPerAcre = yieldInt
+        harvest = acresToPlant * bushelsPerAcre
+        bushelsInStorage = bushelsInStorage + harvest
 
       }
     }
