@@ -100,6 +100,8 @@ object Hammurabi extends App {
           bushelsInStorage = bushelsInStorage - rats_ate
         }
 
+        pricePerAcre = Random.nextInt(23) + 17
+
       }
     }
   }
