@@ -1,4 +1,5 @@
 import scala.io.StdIn.readLine
+import scala.util.control.Breaks._
 import scala.util.Random
 
 object Hammurabi extends App {
@@ -17,64 +18,71 @@ object Hammurabi extends App {
     var pricePerAcre = 19 // each acre costs this many bushels
     var plagueDeaths = 0
 
+    var endGame = false
+
     printIntroductoryMessage()
 
     var i = 0
-    for(i <- 1 to 10) {
+    breakable {
+      for(i <- 1 to 10) {
+        if (endGame) break
+        println(
+          s"""
+             |O great Hammurabi!
+             |You are in year $i of your ten year rule.
+             |In the previous year $starved people starved to death.
+             |In the previous year $immigrants people entered the kingdom.
+             |The population is now $population.
+             |We harvested $harvest bushels at $bushelsPerAcre bushels per acre.
+             |Rats destroyed $rats_ate bushels, leaving $bushelsInStorage bushels in storage.
+             |The city owns $acresOwned acres of land.
+             |Land is currently worth $pricePerAcre bushels per acre.
+             |There were $plagueDeaths deaths from the plague.
+          """.stripMargin
+        )
 
-      println(
-        s"""
-           |O great Hammurabi!
-           |You are in year $i of your ten year rule.
-           |In the previous year $starved people starved to death.
-           |In the previous year $immigrants people entered the kingdom.
-           |The population is now $population.
-           |We harvested $harvest bushels at $bushelsPerAcre bushels per acre.
-           |Rats destroyed $rats_ate bushels, leaving $bushelsInStorage bushels in storage.
-           |The city owns $acresOwned acres of land.
-           |Land is currently worth $pricePerAcre bushels per acre.
-           |There were $plagueDeaths deaths from the plague.
-        """.stripMargin
-      )
+        // Collect user input.
+        var acresToBuy = askHowMuchLandToBuy(bushelsInStorage, pricePerAcre)
+        acresOwned = acresOwned + acresToBuy
+        bushelsInStorage = bushelsInStorage - (acresToBuy * pricePerAcre)
 
-      // Collect user input.
-      var acresToBuy = askHowMuchLandToBuy(bushelsInStorage, pricePerAcre)
-      acresOwned = acresOwned + acresToBuy
-      bushelsInStorage = bushelsInStorage - (acresToBuy * pricePerAcre)
+        if (acresToBuy == 0) {
+          var acresToSell = askHowMuchLandToSell(acresOwned)
+          acresOwned = acresOwned - acresToSell
+          bushelsInStorage = bushelsInStorage + (acresToSell * pricePerAcre)
+        }
 
-      if (acresToBuy == 0) {
-        var acresToSell = askHowMuchLandToSell(acresOwned)
-        acresOwned = acresOwned - acresToSell
-        bushelsInStorage = bushelsInStorage + (acresToSell * pricePerAcre)
+        var grainToFeed = askHowMuchGrainToFeed(bushelsInStorage)
+        bushelsInStorage = bushelsInStorage - grainToFeed
+
+        var acresToPlant = askHowManyAcresToPlant(acresOwned)
+
+        // Determine consequences.
+        if (random(15)) {
+          plagueDeaths = population / 2
+          population = population - plagueDeaths
+          println("Oh no! A terrible plague has afflicted the city!")
+        } else {
+          plagueDeaths = 0
+        }
+
+        var grainNeeded = population * 20
+        if (grainToFeed > grainNeeded) {
+          var waste = grainToFeed - grainNeeded
+          println(waste + " bushels of grain were wasted!")
+        } else if (grainToFeed < grainNeeded) {
+          var shortfall = grainNeeded - grainToFeed
+          var starved = shortfall / 20
+          population = population - starved
+          println("Oh no! There was not enough grain and " + starved + " people starved!")
+          var starvationCap = (population / 20) * 9
+          if (starved > starvationCap) {
+            println("Too many people starved! You are thrown out of office :( GAME OVER")
+            endGame = true
+          }
+        }
       }
-
-      var grainToFeed = askHowMuchGrainToFeed(bushelsInStorage)
-      bushelsInStorage = bushelsInStorage - grainToFeed
-
-      var acresToPlant = askHowManyAcresToPlant(acresOwned)
-
-      // Determine consequences.
-      if (random(15)) {
-        plagueDeaths = population / 2
-        population = population - plagueDeaths
-        println("Oh no! A terrible plague has afflicted the city!")
-      } else {
-        plagueDeaths = 0
-      }
-
-      var grainNeeded = population * 20
-      if (grainToFeed > grainNeeded) {
-        var waste = grainToFeed - grainNeeded
-        println(waste + " bushels of grain were wasted!")
-      } else if (grainToFeed < grainNeeded) {
-        var shortfall = grainNeeded - grainToFeed
-        var starved = shortfall / 20
-        population = population - starved
-        println("Oh no! There was not enough grain and " + starved + " people starved!")
-      }
-
     }
-
   }
 
   def askHowMuchLandToBuy(bushels: Int, price: Int) = {
