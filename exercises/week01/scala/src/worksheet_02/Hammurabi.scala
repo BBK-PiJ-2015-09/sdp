@@ -95,6 +95,11 @@ object Hammurabi extends App {
         harvest = acresToPlant * bushelsPerAcre
         bushelsInStorage = bushelsInStorage + harvest
 
+        if (random(40)) {
+          rats_ate = (bushelsInStorage / 10) * (Random.nextInt(3) + 1)
+          bushelsInStorage = bushelsInStorage - rats_ate
+        }
+
       }
     }
   }
