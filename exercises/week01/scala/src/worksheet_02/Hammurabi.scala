@@ -81,6 +81,13 @@ object Hammurabi extends App {
             endGame = true
           }
         }
+
+        if (grainToFeed >= grainNeeded) {
+          immigrants = (20 * acresOwned + bushelsInStorage) / (100 * population) + 1
+        } else {
+          immigrants = 0
+        }
+
       }
     }
   }
