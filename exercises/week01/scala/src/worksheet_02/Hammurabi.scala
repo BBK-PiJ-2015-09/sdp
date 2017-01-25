@@ -19,6 +19,7 @@ object Hammurabi extends App {
     var plagueDeaths = 0
 
     var endGame = false
+    var totalStarved = 0
 
     printIntroductoryMessage()
 
@@ -74,6 +75,7 @@ object Hammurabi extends App {
           var shortfall = grainNeeded - grainToFeed
           var starved = shortfall / 20
           population = population - starved
+          totalStarved = totalStarved + starved
           println("Oh no! There was not enough grain and " + starved + " people starved!")
           var starvationCap = (population / 20) * 9
           if (starved > starvationCap) {
@@ -104,6 +106,9 @@ object Hammurabi extends App {
 
       }
     }
+
+    printSummary(totalStarved, acresOwned)
+
   }
 
   def askHowMuchLandToBuy(bushels: Int, price: Int) = {
@@ -177,8 +182,13 @@ object Hammurabi extends App {
         |Rule wisely and you will be showered with appreciation at the end of
         |your term. Rule poorly and you will be kicked out of office!
       """.stripMargin
-
     )
+  }
+
+  def printSummary(starved: Int, acres: Int): Unit = {
+    println("Congratulations, you survived! " + starved + " people starved, and ")
+    println("you owned " + acres + " acres of land by the end of the game!")
+    println("****~~~~GAME OVER~~~~****")
   }
 
 }
