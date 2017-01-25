@@ -57,8 +57,20 @@ object Hammurabi extends App {
       if (random(15)) {
         plagueDeaths = population / 2
         population = population - plagueDeaths
+        println("Oh no! A terrible plague has afflicted the city!")
       } else {
         plagueDeaths = 0
+      }
+
+      var grainNeeded = population * 20
+      if (grainToFeed > grainNeeded) {
+        var waste = grainToFeed - grainNeeded
+        println(waste + " bushels of grain were wasted!")
+      } else if (grainToFeed < grainNeeded) {
+        var shortfall = grainNeeded - grainToFeed
+        var starved = shortfall / 20
+        population = population - starved
+        println("Oh no! There was not enough grain and " + starved + " people starved!")
       }
 
     }
