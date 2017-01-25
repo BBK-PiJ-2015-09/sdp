@@ -38,6 +38,13 @@ object Hammurabi extends App {
       var acresToBuy = askHowMuchLandToBuy(bushelsInStorage, pricePerAcre)
       acresOwned = acresOwned + acresToBuy
       bushelsInStorage = bushelsInStorage - (acresToBuy * pricePerAcre)
+
+      if (acresToBuy == 0) {
+        var acresToSell = askHowMuchLandToSell(acresOwned)
+        acresOwned = acresOwned - acresToSell
+        bushelsInStorage = bushelsInStorage + (acresToSell * pricePerAcre)
+      }
+
     }
 
   }
@@ -49,6 +56,15 @@ object Hammurabi extends App {
       acresToBuy = readInt("How many acres will you buy?? ")
     }
     acresToBuy
+  }
+
+  def askHowMuchLandToSell(acres: Int) = {
+    var acresToSell = readInt("How many acres will you sell? ")
+    while (acresToSell < 0 || acresToSell > acres) {
+      println("O Great Hammurabi, we have but " + acres + " acres of land!")
+      acresToSell = readInt("How many acres will you sell?? ")
+    }
+    acresToSell
   }
 
   def readInt(message: String): Int = {
