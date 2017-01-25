@@ -17,7 +17,6 @@ object Hammurabi extends App {
     var plagueDeaths = 0
 
     printIntroductoryMessage()
-    readInt("Please enter a number: ")
 
     var i = 0
     for(i <- 1 to 10) {
@@ -35,8 +34,21 @@ object Hammurabi extends App {
            |There were $plagueDeaths deaths from the plague.
         """.stripMargin
       )
+
+      var acresToBuy = askHowMuchLandToBuy(bushelsInStorage, pricePerAcre)
+      acresOwned = acresOwned + acresToBuy
+      bushelsInStorage = bushelsInStorage - (acresToBuy * pricePerAcre)
     }
 
+  }
+
+  def askHowMuchLandToBuy(bushels: Int, price: Int) = {
+    var acresToBuy = readInt("How many acres will you buy? ")
+    while (acresToBuy < 0 || acresToBuy * price > bushels) {
+      println("O Great Hammurabi, we have but " + bushels + " bushels of grain!")
+      acresToBuy = readInt("How many acres will you buy?? ")
+    }
+    acresToBuy
   }
 
   def readInt(message: String): Int = {
