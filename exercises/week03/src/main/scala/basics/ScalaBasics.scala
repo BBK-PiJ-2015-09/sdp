@@ -121,7 +121,9 @@ object ScalaBasics {
    * @param b a big integer
    * @return the base 36 equivalent
    */
-  def base36(b: BigInt): String = ???
+  def base36(b: BigInt): String = {
+    b.toString(36)
+  }
 
   /**
    * Splits the String s in half.
