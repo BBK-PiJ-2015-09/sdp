@@ -172,7 +172,7 @@ object ScalaBasics {
    * @return true if s is a palindrome; false otherwise
    */
   def isPalindrome(s: String): Boolean = {
-    val normalised = s.toLowerCase().replaceAll("\\s", "").replaceAll("\\.|\\?|\\,|\\;|\\!|\\-|\\'|", "") 
+    val normalised = s.replaceAll("\\s|\\.|\\?|\\,|\\;|\\!|\\-|\\'|", "").toLowerCase()
     val reversed = normalised.reverse
     val truthyness = for (i <- 0 until s.length/2)
       yield normalised.charAt(i) == reversed.charAt(i)
