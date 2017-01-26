@@ -173,10 +173,8 @@ object ScalaBasics {
    */
   def isPalindrome(s: String): Boolean = {
     val normalised = s.replaceAll("\\s|\\.|\\?|\\,|\\;|\\!|\\-|\\'|", "").toLowerCase()
-    val reversed = normalised.reverse
-    val truthyness = for (i <- 0 until s.length/2)
-      yield normalised.charAt(i) == reversed.charAt(i)
-
+    val truthyness = for (i <- 0 until normalised.length/2)
+      yield normalised.charAt(i) == normalised.charAt(normalised.length-(i+1))
     return truthyness.forall(_ == true)
   }
 
