@@ -80,7 +80,14 @@ object ScalaBasics {
    * @param r the array of integers
    * @return the minimum integer in the array
    */
-  def minFor(r: Array[Int]): Int = ???
+  def minFor(r: Array[Int]): Int = {
+    var orderedSet = collection.immutable.SortedSet[Int]()
+    var i = 0
+    for(i <- 0 to r.length - 1) {
+      orderedSet += r(i)
+    }
+    return orderedSet.head
+  }
 
   /**
    * Write a function called minRecursive that returns the minimum integer in the Array r.
