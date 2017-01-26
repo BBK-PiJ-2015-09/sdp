@@ -171,7 +171,14 @@ object ScalaBasics {
    * @param s the potential palindrome
    * @return true if s is a palindrome; false otherwise
    */
-  def isPalindrome(s: String): Boolean = ???
+  def isPalindrome(s: String): Boolean = {
+    val normalised = s.toLowerCase().replaceAll("\\s", "").replaceAll("\\.|\\?|\\,|\\;|\\!|\\-|\\'|", "") 
+    val reversed = normalised.reverse
+    val truthyness = for (i <- 0 until s.length/2)
+      yield normalised.charAt(i) == reversed.charAt(i)
+
+    return truthyness.forall(_ == true)
+  }
 
   /**
    * You don't have to complete this one as we've removed it from the list
