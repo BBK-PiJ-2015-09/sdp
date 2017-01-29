@@ -82,7 +82,7 @@ object ScalaBasics {
    */
   def minFor(r: Array[Int]): Int = {
     var orderedSet = collection.immutable.SortedSet[Int]()
-    for(i <- 0 to r.length - 1) {
+    for(i <- 0 until r.length) {
       orderedSet += r(i)
     }
     return orderedSet.head
