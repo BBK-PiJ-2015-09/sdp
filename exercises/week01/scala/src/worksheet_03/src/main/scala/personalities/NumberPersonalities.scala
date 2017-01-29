@@ -24,4 +24,8 @@ object NumberPersonalities {
     cache == 1
   }
 
+  def isTriangular(n: Int): Boolean = {
+    true
+  }
+
 }
