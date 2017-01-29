@@ -34,4 +34,14 @@ object NumberPersonalities {
     total == 0
   }
 
+  def isSquare(n: Int): Boolean = {
+    var total = n
+    var index = 1
+    while (total > 0) {
+      total -= index
+      index += 2
+    }
+    total == 0
+  }
+
 }

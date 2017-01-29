@@ -39,4 +39,16 @@ class NumberPersonalitiesSpec extends FunSuite {
     assert(isTriangular(16) == false)
   }
 
+  test("#isSquare") {
+    assert(isSquare(1) == true)
+    assert(isSquare(2) == false)
+    assert(isSquare(3) == false)
+    assert(isSquare(4) == true)
+    assert(isSquare(9) == true)
+    assert(isSquare(16) == true)
+    assert(isSquare(17) == false)
+    assert(isSquare(999999) == false)
+    assert(isSquare(1000000) == true)
+  }
+
 }
