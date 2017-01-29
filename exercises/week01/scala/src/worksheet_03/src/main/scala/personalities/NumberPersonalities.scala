@@ -25,7 +25,13 @@ object NumberPersonalities {
   }
 
   def isTriangular(n: Int): Boolean = {
-    true
+    var total = n
+    var index = 0
+    while (total > 0) {
+      index += 1
+      total -= index
+    }
+    total == 0
   }
 
 }

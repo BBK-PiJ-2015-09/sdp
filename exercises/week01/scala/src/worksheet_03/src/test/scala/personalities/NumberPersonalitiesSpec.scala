@@ -31,10 +31,12 @@ class NumberPersonalitiesSpec extends FunSuite {
 
   test("#isTriangular") {
     assert(isTriangular(1) == true)
+    assert(isTriangular(2) == false)
     assert(isTriangular(3) == true)
     assert(isTriangular(6) == true)
     assert(isTriangular(10) == true)
     assert(isTriangular(15) == true)
+    assert(isTriangular(16) == false)
   }
 
 }
