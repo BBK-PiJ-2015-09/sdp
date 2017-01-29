@@ -11,4 +11,8 @@ object NumberPersonalities {
     if (n == 1) false else (for(i <- 2 until n) yield n % i != 0).forall(_ == true)
   }
 
+  def isHappy(n: Int): Boolean = {
+    true
+  }
+
 }

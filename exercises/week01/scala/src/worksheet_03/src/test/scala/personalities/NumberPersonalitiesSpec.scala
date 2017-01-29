@@ -21,4 +21,9 @@ class NumberPersonalitiesSpec extends FunSuite {
 
   }
 
+  test("#isHappy") {
+    assert(isHappy(1) == true)
+    assert(isHappy(2) == false)
+  }
+
 }
