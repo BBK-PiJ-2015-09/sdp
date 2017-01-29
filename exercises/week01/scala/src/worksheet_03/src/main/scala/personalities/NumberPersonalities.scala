@@ -12,7 +12,14 @@ object NumberPersonalities {
   }
 
   def isHappy(n: Int): Boolean = {
-    true
+    var digits = scala.collection.immutable.IndexedSeq[Int]()
+    var cache = 0
+    do  {
+      digits = n.toString.map(_.asDigit)
+      cache = 0
+      for(digit <- digits) cache += (digit * digit)
+    } while ( cache != 1 && cache != 4)
+    cache == 1
   }
 
 }
