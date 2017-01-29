@@ -51,4 +51,20 @@ class NumberPersonalitiesSpec extends FunSuite {
     assert(isSquare(1000000) == true)
   }
 
+  test("#isSmug") {
+    assert(isSmug(1) == false)
+    assert(isSmug(2) == true)
+    assert(isSmug(3) == false)
+    assert(isSmug(4) == false)
+    assert(isSmug(5) == true)
+    assert(isSmug(6) == false)
+    assert(isSmug(7) == false)
+    assert(isSmug(8) == true)
+    assert(isSmug(9) == false)
+    assert(isSmug(10) == true)
+    assert(isSmug(11) == false)
+    assert(isSmug(12) == false)
+    assert(isSmug(13) == true)
+  }
+
 }

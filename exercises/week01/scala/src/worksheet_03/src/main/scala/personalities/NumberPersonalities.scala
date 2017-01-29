@@ -35,6 +35,9 @@ object NumberPersonalities {
   }
 
   def isSquare(n: Int): Boolean = {
+    if (n == 0) {
+      return false
+    }
     var total = n
     var index = 1
     while (total > 0) {
@@ -42,6 +45,22 @@ object NumberPersonalities {
       index += 2
     }
     total == 0
+  }
+
+  def isSmug(n: Int): Boolean = {
+    var total = n
+    var index = 0
+    var square = 0
+    var result = false
+    while (square < n) {
+      index += 1
+      square = index * index
+      total = n - square
+      if (isSquare(total)) {
+        result = true
+      }
+    }
+    result
   }
 
 }
