@@ -4,7 +4,44 @@ object NumberPersonalities {
   val limit = 100
 
   def main(args: Array[String]): Unit = {
-
+    for(i <- 1 to limit) {
+      print(i + "    ")
+      if (isPrime(i))
+        print("p, ")
+      else
+        print("c, ")
+      if (isHappy(i))
+        print("h, ")
+      else
+        print("u, ")
+      if (isTriangular(i))
+        print("t, ")
+      else
+        print("not t, ")
+      if (isSquare(i))
+        print("s, ")
+      else
+        print("not s, ")
+      if (isSmug(i))
+        print("sm, ")
+      else
+        print("not sm, ")
+      if (isHonest(i))
+        print("ht, ")
+      else
+        print("dis ")
+      if (isPronic(i))
+        print("pr, ")
+      else
+        print("not pr, ")
+      if (isDeficient(i))
+        print("d")
+      else if (isPerfect(i))
+        print("per")
+      else if (isAbundant(i))
+        print("a")
+      println("")
+    }
   }
 
   def isPrime(n: Int): Boolean = {
