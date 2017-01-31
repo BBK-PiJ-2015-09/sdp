@@ -100,15 +100,19 @@ class NumberPersonalitiesSpec extends FunSuite {
 
   test("#isDeficient") {
     assert(isDeficient(5) == true)
+    assert(isDeficient(6) == false)
     assert(isDeficient(24) == false)
   }
 
   test("#isPerfect") {
-
+    assert(isPerfect(5) == false)
+    assert(isPerfect(6) == true)
+    assert(isPerfect(24) == false)
   }
 
   test("#isAbundant") {
     assert(isAbundant(5) == false)
+    assert(isAbundant(6) == false)
     assert(isAbundant(24) == true)
   }
 

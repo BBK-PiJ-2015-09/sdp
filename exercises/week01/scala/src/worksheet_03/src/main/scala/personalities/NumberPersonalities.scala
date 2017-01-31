@@ -108,6 +108,10 @@ object NumberPersonalities {
     sumOfPositiveDivisorsOf(n) < n
   }
 
+  def isPerfect(n: Int): Boolean = {
+    sumOfPositiveDivisorsOf(n) == n
+  }
+
   def isAbundant(n: Int): Boolean = {
     sumOfPositiveDivisorsOf(n) > n
   }
