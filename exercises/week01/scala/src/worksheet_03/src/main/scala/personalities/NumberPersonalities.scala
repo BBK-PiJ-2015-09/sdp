@@ -63,4 +63,16 @@ object NumberPersonalities {
     result
   }
 
+  def isHonest(n: Int): Boolean = {
+    var k = 1
+    var result = true
+    while (k < n && result) {
+      if (n / k == k && k * k != n) {
+        result = false
+      }
+      k += 1
+    }
+    result
+  }
+
 }

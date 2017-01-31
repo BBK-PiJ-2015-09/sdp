@@ -67,4 +67,22 @@ class NumberPersonalitiesSpec extends FunSuite {
     assert(isSmug(13) == true)
   }
 
+  test("#isHonest") {
+    assert(isHonest(1) == true)
+    assert(isHonest(2) == true)
+    assert(isHonest(3) == true)
+    assert(isHonest(4) == true)
+    assert(isHonest(5) == false)
+    assert(isHonest(6) == true)
+    assert(isHonest(7) == true)
+    assert(isHonest(8) == true)
+    assert(isHonest(9) == true)
+    assert(isHonest(10) == false)
+    assert(isHonest(11) == false)
+    assert(isHonest(12) == true)
+    assert(isHonest(13) == true)
+    assert(isHonest(14) == true)
+    assert(isHonest(15) == true)
+  }
+
 }
