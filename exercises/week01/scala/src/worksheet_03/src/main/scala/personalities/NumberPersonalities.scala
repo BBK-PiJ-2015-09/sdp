@@ -75,4 +75,18 @@ object NumberPersonalities {
     result
   }
 
+  def isPronic(n: Int): Boolean = {
+    var k = 1
+    var product = 0
+    var result = false
+    while (product < n && !result) {
+      product = k * (k + 1)
+      if (product == n) {
+        result = true
+      }
+      k += 1
+    }
+    result
+  }
+
 }

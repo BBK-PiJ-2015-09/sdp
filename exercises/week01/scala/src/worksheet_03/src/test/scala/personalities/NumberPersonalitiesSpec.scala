@@ -85,4 +85,16 @@ class NumberPersonalitiesSpec extends FunSuite {
     assert(isHonest(15) == true)
   }
 
+  test("#isPronic") {
+    assert(isPronic(1) == false)
+    assert(isPronic(2) == true)
+    assert(isPronic(3) == false)
+    assert(isPronic(4) == false)
+    assert(isPronic(5) == false)
+    assert(isPronic(6) == true)
+    assert(isPronic(7) == false)
+    assert(isPronic(12) == true)
+    assert(isPronic(19) == false)
+    assert(isPronic(20) == true)
+  }
 }
