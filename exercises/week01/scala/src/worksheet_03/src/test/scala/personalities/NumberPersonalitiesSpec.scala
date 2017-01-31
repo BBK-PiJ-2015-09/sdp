@@ -115,5 +115,6 @@ class NumberPersonalitiesSpec extends FunSuite {
     assert(sumOfPositiveDivisorsOf(3) == 1)
     assert(sumOfPositiveDivisorsOf(4) == 3)
     assert(sumOfPositiveDivisorsOf(5) == 1)
+    assert(sumOfPositiveDivisorsOf(24) == 36)
   }
 }
