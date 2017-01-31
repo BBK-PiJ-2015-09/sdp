@@ -103,4 +103,8 @@ object NumberPersonalities {
     }
     sum
   }
+
+  def isAbundant(n: Int): Boolean = {
+    sumOfPositiveDivisorsOf(n) > n
+  }
 }

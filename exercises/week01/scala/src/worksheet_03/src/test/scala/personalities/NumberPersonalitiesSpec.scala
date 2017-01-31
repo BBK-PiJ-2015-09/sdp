@@ -102,6 +102,14 @@ class NumberPersonalitiesSpec extends FunSuite {
 
   }
 
+  test("#isPerfect") {
+
+  }
+
+  test("#isAbundant") {
+    assert(isAbundant(24) == true)
+  }
+
   test("#dividesEvenly") {
     assert(dividesEvenly(1, 2) == false)
     assert(dividesEvenly(2, 2) == true)
