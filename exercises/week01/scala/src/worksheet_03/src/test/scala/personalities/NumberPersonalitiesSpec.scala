@@ -97,4 +97,23 @@ class NumberPersonalitiesSpec extends FunSuite {
     assert(isPronic(19) == false)
     assert(isPronic(20) == true)
   }
+
+  test("#isDeficient") {
+
+  }
+
+  test("#dividesEvenly") {
+    assert(dividesEvenly(1, 2) == false)
+    assert(dividesEvenly(2, 2) == true)
+    assert(dividesEvenly(3, 2) == false)
+    assert(dividesEvenly(4, 2) == true)
+  }
+
+  test("#sumOfPositiveDivisorsOf") {
+    assert(sumOfPositiveDivisorsOf(1) == 0)
+    assert(sumOfPositiveDivisorsOf(2) == 1)
+    assert(sumOfPositiveDivisorsOf(3) == 1)
+    assert(sumOfPositiveDivisorsOf(4) == 3)
+    assert(sumOfPositiveDivisorsOf(5) == 1)
+  }
 }

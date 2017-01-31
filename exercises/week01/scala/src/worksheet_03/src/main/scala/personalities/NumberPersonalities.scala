@@ -89,4 +89,18 @@ object NumberPersonalities {
     result
   }
 
+  def dividesEvenly(dividend: Int, divisor: Int): Boolean = {
+    dividend % divisor == 0
+  }
+
+  def sumOfPositiveDivisorsOf(n: Int): Int = {
+    var k = 1
+    var sum = 0
+    while(k < n) {
+      if (dividesEvenly(n, k))
+        sum += k
+      k += 1
+    }
+    sum
+  }
 }
