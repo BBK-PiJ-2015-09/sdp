@@ -26,7 +26,9 @@ object Funcs {
     * @return a list whose head is `a' and whose tail is all but the first
     *         element of ls.
     **/
-  def setHead[A](ls: List[A], a: A): List[A] = ???
+  def setHead[A](ls: List[A], a: A): List[A] = {
+    a::tail(ls)
+  }
 
   /**
     * drop removes n elements from the given list. If n is greater than the
