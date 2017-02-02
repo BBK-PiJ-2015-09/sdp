@@ -15,6 +15,8 @@ class FunctionsTestSuite extends FunSuite {
 
   test("drop removes N elements from the front of the list") {
     assert(drop(List(1, 2, 3), 2) == List(3))
+    assert(drop(List(1, 2, 3), 1) == List(2, 3))
+    assert(drop(List(1, 2, 3, 4, 5, 6), 4) == List(5, 6))
   }
 
   test("init removes the last element") {
