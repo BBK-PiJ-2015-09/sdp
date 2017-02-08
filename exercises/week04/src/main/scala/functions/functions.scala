@@ -100,7 +100,9 @@ object Funcs {
     foldLeft(ls, 0)((sum, _) => sum + 1)
   }
 
-  def reverse[A](ls: List[A]): List[A] = ???
+  def reverse[A](ls: List[A]): List[A] = {
+    foldLeft(ls, List[A]())((reversed, a) => a :: reversed)
+  }
 
   def flatten[A](ls: List[List[A]]): List[A] = ???
 
