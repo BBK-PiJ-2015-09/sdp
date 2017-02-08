@@ -97,7 +97,7 @@ object Funcs {
   }
 
   def length[A](ls: List[A]): Int = {
-    foldLeft(ls, "")(_ + _).length()
+    foldLeft(ls, 0)((sum, _) => sum + 1)
   }
 
   def reverse[A](ls: List[A]): List[A] = ???

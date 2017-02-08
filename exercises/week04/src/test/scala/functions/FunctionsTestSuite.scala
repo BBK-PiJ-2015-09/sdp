@@ -43,7 +43,13 @@ class FunctionsTestSuite extends FunSuite {
   test("length calculates the length") {
     assert(length(List(1.0, 2.0, 3.0, 4.0, 5.0)) == 5)
   }
+
+  test("reverse reverses the list (string)") {
     assert(reverse("Hello".toList) == "olleH".toList)
+  }
+
+  test("reverse reverses the list") {
+    assert(reverse(List(1, 2, 3)) == List(3, 2, 1))
   }
 
   test("flatten flattens the nested list") {
