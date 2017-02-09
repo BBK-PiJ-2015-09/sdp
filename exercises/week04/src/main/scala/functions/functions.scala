@@ -54,8 +54,8 @@ object Funcs {
     */
   def init[A](ls: List[A]): List[A] = ls match {
     case Nil => throw new IllegalArgumentException
-    case hd::_::Nil => hd::Nil
-    case hd::_ => hd::init(tail(ls))
+    case hd :: Nil => Nil
+    case hd :: tl => hd :: init(tl)
   }
 
   // LIST FOLDING
