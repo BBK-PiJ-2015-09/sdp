@@ -10,3 +10,8 @@ case class Person(name: String, age: Int)
 // Decompile:
 // java -jar cfr_0_119.jar Person.class
 
+// classes
+// case classes
+// companion
+// algebraic data types
+// structural data types
