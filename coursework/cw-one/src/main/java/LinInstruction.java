@@ -1,5 +1,3 @@
-package sml;
-
 public class LinInstruction extends Instruction {
     private int register;
     private int value;

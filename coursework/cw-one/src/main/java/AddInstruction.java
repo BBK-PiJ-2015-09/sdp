@@ -1,5 +1,3 @@
-package sml;
-
 public class AddInstruction extends Instruction {
     private int result;
     private int op1;

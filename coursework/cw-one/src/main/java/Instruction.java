@@ -1,5 +1,3 @@
-package sml;
-
 public abstract class Instruction {
     protected String label;
     protected String opcode;

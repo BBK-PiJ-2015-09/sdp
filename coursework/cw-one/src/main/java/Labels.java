@@ -1,5 +1,3 @@
-package sml;
-
 import java.util.ArrayList;
 
 //An instance contains a list of Strings, called "labels",
