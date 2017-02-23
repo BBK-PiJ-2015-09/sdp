@@ -1,8 +1,6 @@
-package sml
-
-//An instance contains a list of Strings, called "labels",
-//in the order in which they were added to the list.
-
+/**
+  * Created by birkbeck on 23/02/2017.
+  */
 case class Labels() {
   var labels: Seq[String] = Seq()
 

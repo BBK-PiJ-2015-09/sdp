@@ -1,5 +1,3 @@
-package sml
-
 /**
   * The machine language interpreter
   */
