@@ -29,7 +29,7 @@ public class AddInstructionTest {
         m.getRegisters().setRegister(op2, val2);
         instruction.execute(m);
 
-        assertEquals(op1 + op2, m.getRegisters().getRegister(result));
+        assertEquals(sum, m.getRegisters().getRegister(result));
     }
 
     @Test
