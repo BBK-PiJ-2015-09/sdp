@@ -21,11 +21,11 @@ public class LinInstructionTest {
         m.setRegisters(registers);
         instruction.execute(m);
 
-        assertEquals(m.getRegisters().getRegister(register), value);
+        assertEquals(value, m.getRegisters().getRegister(register));
     }
 
     @Test
     public void test_toString() {
-        assertEquals(instruction.toString(), label + ": " + opcode + " register " + register + " value is " + value);
+        assertEquals(label + ": " + opcode + " register " + register + " value is " + value, instruction.toString());
     }
 }
