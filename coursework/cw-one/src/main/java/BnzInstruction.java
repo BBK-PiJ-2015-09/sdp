@@ -14,7 +14,7 @@ public class BnzInstruction extends Instruction {
 
     @Override
     public void execute(Machine m) {
-        m.setPc(0);
+//        m.setPc(0);
     }
 
     @Override
