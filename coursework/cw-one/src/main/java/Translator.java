@@ -103,6 +103,9 @@ public class Translator {
             case "bnz":
                 s1 = scanInt();
                 return new BnzInstruction(label, s1, scan());
+            case "out":
+                s1 = scanInt();
+                return new OutInstruction(label, s1);
         }
 
         // You will have to write code here for the other instructions.
