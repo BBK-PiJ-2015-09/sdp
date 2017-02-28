@@ -11,13 +11,16 @@ public class BnzInstructionTest {
     String label1 = "L1";
     String label2 = "L2";
     String label3 = "L3";
+    String label4 = "L4";
 
-    int register = 0;
+    int register1 = 0;
+    int register2 = 1;
     int value1 = 2;
-    int subtract = 1;
-    Instruction ins1 = new LinInstruction(label1, register, value1);
-    Instruction ins2 = new SubInstruction(label2, register, register, subtract);
-    Instruction bnz = new BnzInstruction(label3, register, label2);
+    int subtract_value = 1;
+    Instruction ins1 = new LinInstruction(label1, register1, value1);
+    Instruction ins2 = new LinInstruction(label2, register2, subtract_value);
+    Instruction ins3 = new SubInstruction(label3, register1, register1, register2);
+    Instruction bnz = new BnzInstruction(label4, register1, label3);
 
     @Test
     public void test_execute() {
@@ -25,10 +28,12 @@ public class BnzInstructionTest {
         labels.addLabel(label1);
         labels.addLabel(label2);
         labels.addLabel(label3);
+        labels.addLabel(label4);
 
         ArrayList prog = new ArrayList<>();
         prog.add(ins1);
         prog.add(ins2);
+        prog.add(ins3);
         prog.add(bnz);
 
         Machine m = new Machine();
