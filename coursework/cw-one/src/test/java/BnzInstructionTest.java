@@ -16,9 +16,9 @@ public class BnzInstructionTest {
 
     int register1 = 0;
     int register2 = 1;
-    int register3 = 2;
     int value1 = 4;
     int subtract_value = 1;
+
     Instruction ins1 = new LinInstruction(label1, register1, value1);
     Instruction ins2 = new LinInstruction(label2, register2, subtract_value);
     Instruction ins3 = new SubInstruction(label3, register1, register1, register2);
