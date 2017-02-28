@@ -41,7 +41,7 @@ public class MachineTest {
         assertThat(m.getProg().get(2), instanceOf(LinInstruction.class));
         assertThat(m.getProg().get(3), instanceOf(MulInstruction.class));
         assertThat(m.getProg().get(4), instanceOf(SubInstruction.class));
-//        assertThat(m.getProg().get(5), instanceOf(BnzInstruction.class));
-//        assertThat(m.getProg().get(6), instanceOf(BnzInstruction.class));
+        assertThat(m.getProg().get(5), instanceOf(BnzInstruction.class));
+//        assertThat(m.getProg().get(6), instanceOf(OutInstruction.class));
     }
 }
