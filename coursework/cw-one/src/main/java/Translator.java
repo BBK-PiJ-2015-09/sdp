@@ -77,6 +77,9 @@ public class Translator {
         int s2;
         int r;
         int x;
+        int parameters;
+        Constructor<?>[] constructors;
+        Constructor constructor;
 
         if (line.equals(""))
             return null;
@@ -91,11 +94,11 @@ public class Translator {
                 r = scanInt();
                 s1 = scanInt();
                 s2 = scanInt();
-                Class[] parameters = {String.class, int.class, int.class, int.class};
-                Constructor<?>[] constructors = Class.forName(ins + "Instruction").getConstructors();
-                Constructor constructor = constructors[0];
+                parameters = 4;
+                constructors = Class.forName(ins + "Instruction").getConstructors();
+                constructor = constructors[0];
                 for(int i = 0; i < constructors.length; i++) {
-                    if (constructors[i].getParameters().length == parameters.length) {
+                    if (constructors[i].getParameters().length == parameters) {
                         constructor = constructors[i];
                     }
                 }
@@ -103,13 +106,37 @@ public class Translator {
             case "Lin":
                 r = scanInt();
                 s1 = scanInt();
-                return new LinInstruction(label, r, s1);
+                parameters = 3;
+                constructors = Class.forName(ins + "Instruction").getConstructors();
+                constructor = constructors[0];
+                for(int i = 0; i < constructors.length; i++) {
+                    if (constructors[i].getParameters().length == parameters) {
+                        constructor = constructors[i];
+                    }
+                }
+                return (Instruction) constructor.newInstance(label, r, s1);
             case "Bnz":
                 s1 = scanInt();
-                return new BnzInstruction(label, s1, scan());
+                parameters = 3;
+                constructors = Class.forName(ins + "Instruction").getConstructors();
+                constructor = constructors[0];
+                for(int i = 0; i < constructors.length; i++) {
+                    if (constructors[i].getParameters().length == parameters) {
+                        constructor = constructors[i];
+                    }
+                }
+                return (Instruction) constructor.newInstance(label, s1, scan());
             case "Out":
                 s1 = scanInt();
-                return new OutInstruction(label, s1);
+                parameters = 2;
+                constructors = Class.forName(ins + "Instruction").getConstructors();
+                constructor = constructors[0];
+                for(int i = 0; i < constructors.length; i++) {
+                    if (constructors[i].getParameters().length == parameters) {
+                        constructor = constructors[i];
+                    }
+                }
+                return (Instruction) constructor.newInstance(label, s1);
         }
 
         // You will have to write code here for the other instructions.
