@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
@@ -87,7 +88,15 @@ public class Translator {
                 r = scanInt();
                 s1 = scanInt();
                 s2 = scanInt();
-                return (Instruction) Class.forName(ins + "Instruction").getConstructor().newInstance(label, r, s1, s2);
+                Class[] parameters = {String.class, int.class, int.class, int.class};
+                Constructor<?>[] constructors = Class.forName(ins + "Instruction").getConstructors();
+                Constructor constructor = constructors[0];
+                for(int i = 0; i < constructors.length; i++) {
+                    if (constructors[i].getParameters().length == parameters.length) {
+                        constructor = constructors[i];
+                    }
+                }
+                return (Instruction) constructor.newInstance(label, r, s1, s2);
             case "Lin":
                 r = scanInt();
                 s1 = scanInt();
