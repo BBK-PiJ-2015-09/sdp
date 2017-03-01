@@ -55,5 +55,6 @@ public class MachineTest {
         assertThat(m.getProg().get(0), instanceOf(LinInstruction.class));
         assertThat(m.getProg().get(1), instanceOf(LinInstruction.class));
         assertThat(m.getProg().get(2), instanceOf(DivInstruction.class));
+        assertThat(m.getProg().get(3), instanceOf(AddInstruction.class));
     }
 }
