@@ -1,6 +1,7 @@
 import org.junit.Before;
 import org.junit.Test;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
@@ -31,7 +32,7 @@ public class MachineTest {
     }
 
     @Test
-    public void test_translateFromFile() {
+    public void test_translateFromFile() throws ClassNotFoundException, NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
         Machine m = new Machine();
         Translator t = new Translator("SML/out/production/SML/test2.sml");
         t.readAndTranslate(m.getLabels(), m.getProg());
@@ -46,7 +47,7 @@ public class MachineTest {
     }
 
     @Test
-    public void test_translateFromFileDiv() {
+    public void test_translateFromFileDiv() throws ClassNotFoundException, NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
         Machine m = new Machine();
         Translator t = new Translator("SML/out/production/SML/test3.sml");
         t.readAndTranslate(m.getLabels(), m.getProg());

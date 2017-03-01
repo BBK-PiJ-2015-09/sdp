@@ -1,3 +1,4 @@
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
 /*
@@ -30,7 +31,7 @@ public class Machine {
     public Machine() {
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
 
         if (args.length != 1) {
             System.err.println("Incorrect number of arguments - Machine <file> - required");
