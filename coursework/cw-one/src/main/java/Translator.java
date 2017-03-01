@@ -80,33 +80,34 @@ public class Translator {
             return null;
 
         String ins = scan();
+        ins = capitalise(ins);
         switch (ins) {
-            case "add":
+            case "Add":
                 r = scanInt();
                 s1 = scanInt();
                 s2 = scanInt();
                 return new AddInstruction(label, r, s1, s2);
-            case "lin":
+            case "Lin":
                 r = scanInt();
                 s1 = scanInt();
                 return new LinInstruction(label, r, s1);
-            case "mul":
+            case "Mul":
                 r = scanInt();
                 s1 = scanInt();
                 s2 = scanInt();
                 return new MulInstruction(label, r, s1, s2);
-            case "sub":
+            case "Sub":
                 r = scanInt();
                 s1 = scanInt();
                 s2 = scanInt();
                 return new SubInstruction(label, r, s1, s2);
-            case "bnz":
+            case "Bnz":
                 s1 = scanInt();
                 return new BnzInstruction(label, s1, scan());
-            case "out":
+            case "Out":
                 s1 = scanInt();
                 return new OutInstruction(label, s1);
-            case "div":
+            case "Div":
                 r = scanInt();
                 s1 = scanInt();
                 s2 = scanInt();
@@ -149,5 +150,9 @@ public class Translator {
         } catch (NumberFormatException e) {
             return Integer.MAX_VALUE;
         }
+    }
+
+    private String capitalise(String string) {
+        return string.substring(0, 1).toUpperCase() + string.substring(1).toLowerCase();
     }
 }
