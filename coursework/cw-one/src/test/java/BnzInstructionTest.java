@@ -76,6 +76,6 @@ public class BnzInstructionTest {
 
     @Test
     public void test_toString() {
-        assertEquals(label3 + ": " + opcode + " next label is " + label2, bnz1.toString());
+        assertEquals(label4 + ": " + opcode + " next label is " + label3 , bnz1.toString());
     }
 }
