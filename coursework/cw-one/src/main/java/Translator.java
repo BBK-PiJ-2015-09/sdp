@@ -5,6 +5,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
+import java.util.Arrays;
 
 /*
  * The translator of a <b>S</b><b>M</b>al<b>L</b> program.
@@ -82,18 +83,26 @@ public class Translator {
         int int2 = scanInt();
         int int3 = scanInt();
         String label2 = scan();
+        
+        Class[] parameters0 = {String.class, int.class, String.class};
+        Class[] parameters1 = {String.class, int.class};
+        Class[] parameters2 = {String.class, int.class, int.class};
+        Class[] parameters3 = {String.class, int.class, int.class, int.class};
 
-        switch (ins) {
-            case "Bnz":
-                return (Instruction) klass.getConstructors()[1].newInstance(label, int1, label2);
-            case "Out":
-                return (Instruction) klass.getConstructors()[1].newInstance(label, int1);
-            case "Lin":
-                return (Instruction) klass.getConstructors()[1].newInstance(label, int1, int2);
-            default:
-                return (Instruction) klass.getConstructors()[1].newInstance(label, int1, int2, int3);
+        Constructor constructor = klass.getConstructors()[1];
+
+        Class[] actual_parameters = constructor.getParameterTypes();
+
+        if (Arrays.equals(actual_parameters, parameters0)) {
+            return (Instruction) klass.getConstructors()[1].newInstance(label, int1, label2);
+        } else if (Arrays.equals(actual_parameters, parameters1)) {
+            return (Instruction) klass.getConstructors()[1].newInstance(label, int1);
+        } else if (Arrays.equals(actual_parameters, parameters2)) {
+            return (Instruction) klass.getConstructors()[1].newInstance(label, int1, int2);
+        } else if (Arrays.equals(actual_parameters, parameters3)) {
+            return (Instruction) klass.getConstructors()[1].newInstance(label, int1, int2, int3);
         }
-
+        return null;
     }
 
     /*
