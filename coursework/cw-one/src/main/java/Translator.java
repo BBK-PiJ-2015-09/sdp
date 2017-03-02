@@ -21,6 +21,12 @@ public class Translator {
     private ArrayList<Instruction> program; // The program to be created
     private String fileName; // source file of SML code
 
+    // Different param signatures for Instructions.
+    private Class[] bnz_params = new Class[]{String.class, int.class, String.class};
+    private Class[] one_int_params = new Class[]{String.class, int.class};
+    private Class[] two_int_params = new Class[]{String.class, int.class, int.class};
+    private Class[] three_int_params = new Class[]{String.class, int.class, int.class, int.class};
+
     public Translator(String fileName) {
         this.fileName = PATH + fileName;
     }
@@ -77,25 +83,35 @@ public class Translator {
         Instruction instance = null;
         if (!line.equals("")) {
             for (Constructor constructor : getConstructors()) {
-                if (Arrays.equals(constructor.getParameterTypes(), new Class[]{String.class, int.class, String.class})) {
-                    instance = (Instruction) constructor.newInstance(label, scanInt(), scan());
-                } else if (Arrays.equals(constructor.getParameterTypes(), new Class[]{String.class, int.class})) {
-                    instance = (Instruction) constructor.newInstance(label, scanInt());
-                } else if (Arrays.equals(constructor.getParameterTypes(), new Class[]{String.class, int.class, int.class})) {
-                    instance = (Instruction) constructor.newInstance(label, scanInt(), scanInt());
-                } else if (Arrays.equals(constructor.getParameterTypes(), new Class[]{String.class, int.class, int.class, int.class})) {
-                    instance = (Instruction) constructor.newInstance(label, scanInt(), scanInt(), scanInt());
-                }
+                instance = getInstance(label, constructor);
             }
         }
         return instance;
     }
 
-  /*
-  * Get the name of the instruction and return its constructors.
-  */
+    /*
+     * Get the name of the instruction and return its constructors.
+     */
     private Constructor[] getConstructors() throws ClassNotFoundException {
         return Class.forName(capitalise(scan()) + "Instruction").getConstructors();
+    }
+
+    /*
+     * Return an instance of the constructor.
+     */
+    private Instruction getInstance(String label, Constructor constructor) throws IllegalAccessException, InvocationTargetException, InstantiationException {
+        Class[] params = constructor.getParameterTypes();
+        if (Arrays.equals(params, bnz_params)) {
+            return (Instruction) constructor.newInstance(label, scanInt(), scan());
+        } else if (Arrays.equals(params, one_int_params)) {
+            return (Instruction) constructor.newInstance(label, scanInt());
+        } else if (Arrays.equals(params, two_int_params)) {
+            return (Instruction) constructor.newInstance(label, scanInt(), scanInt());
+        } else if (Arrays.equals(params, three_int_params)) {
+            return (Instruction) constructor.newInstance(label, scanInt(), scanInt(), scanInt());
+        } else {
+            return null;
+        }
     }
 
     /*
