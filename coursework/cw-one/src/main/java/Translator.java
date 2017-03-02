@@ -78,19 +78,23 @@ public class Translator {
 
         String ins = capitalise(scan());
         Class klass = Class.forName(ins + "Instruction");
+        int int1 = scanInt();
+        int int2 = scanInt();
+        int int3 = scanInt();
+        String label2 = scan();
 
         switch (ins) {
             case "Add":
             case "Sub":
             case "Mul":
             case "Div":
-                return (Instruction) klass.getConstructor(String.class, int.class, int.class, int.class).newInstance(label, scanInt(), scanInt(), scanInt());
+                return (Instruction) klass.getConstructor(label.getClass(), int.class, int.class, int.class).newInstance(label, int1, int2, int3);
             case "Lin":
-                return (Instruction) klass.getConstructor(String.class, int.class, int.class).newInstance(label, scanInt(), scanInt());
+                return (Instruction) klass.getConstructor(label.getClass(), int.class, int.class).newInstance(label, int1, int2);
             case "Bnz":
-                return (Instruction) klass.getConstructor(String.class, int.class, String.class).newInstance(label, scanInt(), scan());
+                return (Instruction) klass.getConstructor(label.getClass(), int.class, label2.getClass()).newInstance(label, int1, label2);
             case "Out":
-                return (Instruction) klass.getConstructor(String.class, int.class).newInstance(label, scanInt());
+                return (Instruction) klass.getConstructor(label.getClass(), int.class).newInstance(label, int1);
         }
 
         // You will have to write code here for the other instructions.
