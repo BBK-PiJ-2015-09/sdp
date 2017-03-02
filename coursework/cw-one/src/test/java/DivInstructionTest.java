@@ -7,6 +7,7 @@ public class DivInstructionTest {
 
     String label = "label";
     String opcode = "div";
+    String symbol = " / ";
     int result = 0;
     int op1 = 1;
     int op2 = 2;
@@ -26,23 +27,7 @@ public class DivInstructionTest {
     }
 
     @Test
-    public void test_divideByMinusFive() {
-        val1 = 10;
-        val2 = -5;
-        sum = val1 / val2;
-
-        Machine m = new Machine();
-        Registers registers = new Registers();
-        m.setRegisters(registers);
-        m.getRegisters().setRegister(op1, val1);
-        m.getRegisters().setRegister(op2, val2);
-        instruction.execute(m);
-
-        assertEquals(sum, m.getRegisters().getRegister(result));
-    }
-
-    @Test
     public void test_toString() {
-        assertEquals(label + ": " + opcode + " " + op1 + " / " + op2 + " to " + result, instruction.toString());
+        new MathsInstructionTest().test_toString(instruction, label, opcode, symbol);
     }
 }

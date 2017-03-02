@@ -19,4 +19,8 @@ public class MathsInstructionTest {
         assertEquals(sum, m.getRegisters().getRegister(result));
     }
 
+    public void test_toString(Instruction instruction, String label, String opcode, String symbol) {
+        assertEquals(label + ": " + opcode + " " + op1 + symbol + op2 + " to " + result, instruction.toString());
+    }
+
 }

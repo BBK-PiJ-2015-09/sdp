@@ -7,6 +7,7 @@ public class MulInstructionTest {
 
     String label = "label";
     String opcode = "mul";
+    String symbol = " * ";
     int result = 0;
     int op1 = 1;
     int op2 = 2;
@@ -27,6 +28,6 @@ public class MulInstructionTest {
 
     @Test
     public void test_toString() {
-        assertEquals(label + ": " + opcode + " " + op1 + " * " + op2 + " to " + result, instruction.toString());
+        new MathsInstructionTest().test_toString(instruction, label, opcode, symbol);
     }
 }
