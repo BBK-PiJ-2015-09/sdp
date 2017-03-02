@@ -1,6 +1,5 @@
 public class OutInstruction extends Instruction {
     private int register;
-    private int value;
 
     public OutInstruction(String label, String opcode) {
         super(label, opcode);
@@ -18,6 +17,6 @@ public class OutInstruction extends Instruction {
 
     @Override
     public String toString() {
-        return super.toString() + " register " + register + " value is " + value;
+        return super.toString() + " register " + register;
     }
 }

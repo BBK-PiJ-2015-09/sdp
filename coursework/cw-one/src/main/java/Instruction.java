@@ -4,7 +4,7 @@ public abstract class Instruction {
 
     // Constructor: an instruction with label l and opcode op
     // (op must be an operation of the language)
-
+    
     public Instruction(String l, String op) {
         this.label = l;
         this.opcode = op;
