@@ -22,14 +22,7 @@ public class MulInstructionTest {
 
     @Test
     public void test_execute() {
-        Machine m = new Machine();
-        Registers registers = new Registers();
-        m.setRegisters(registers);
-        m.getRegisters().setRegister(op1, val1);
-        m.getRegisters().setRegister(op2, val2);
-        instruction.execute(m);
-
-        assertEquals(sum, m.getRegisters().getRegister(result));
+        new MathsInstructionTest().test_execute(instruction, sum);
     }
 
     @Test
