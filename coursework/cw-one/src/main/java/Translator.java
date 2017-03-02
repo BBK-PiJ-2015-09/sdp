@@ -90,14 +90,21 @@ public class Translator {
     }
 
     /*
-     * Get the name of the instruction and return its constructors.
+     * Return the constructors of the instruction.
      */
     private Constructor[] getConstructors() throws ClassNotFoundException {
-        return Class.forName(capitalise(scan()) + "Instruction").getConstructors();
+        return getClass("Instruction").getConstructors();
     }
 
     /*
-     * Return an instance of the constructor.
+     * Return the class of the instruction.
+     */
+    private Class getClass(String postfix) throws ClassNotFoundException {
+        return Class.forName(capitalise(scan()) + postfix);
+    }
+
+    /*
+     * Return an instance of a constructor.
      */
     private Instruction getInstance(String label, Constructor constructor) throws IllegalAccessException, InvocationTargetException, InstantiationException {
         Class[] params = constructor.getParameterTypes();
