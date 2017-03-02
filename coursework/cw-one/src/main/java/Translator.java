@@ -84,19 +84,21 @@ public class Translator {
         int int3 = scanInt();
         String label2 = scan();
 
-        Constructor constructor = klass.getConstructors()[1];
-        Class[] actual_parameters = constructor.getParameterTypes();
+        Instruction instance = null;
 
-        if (Arrays.equals(actual_parameters, new Class[]{String.class, int.class, String.class})) {
-            return (Instruction) constructor.newInstance(label, int1, label2);
-        } else if (Arrays.equals(actual_parameters, new Class[]{String.class, int.class})) {
-            return (Instruction) constructor.newInstance(label, int1);
-        } else if (Arrays.equals(actual_parameters, new Class[]{String.class, int.class, int.class})) {
-            return (Instruction) constructor.newInstance(label, int1, int2);
-        } else if (Arrays.equals(actual_parameters, new Class[]{String.class, int.class, int.class, int.class})) {
-            return (Instruction) constructor.newInstance(label, int1, int2, int3);
+        for(Constructor constructor : klass.getConstructors()) {
+            if (Arrays.equals(constructor.getParameterTypes(), new Class[]{String.class, int.class, String.class})) {
+                instance = (Instruction) constructor.newInstance(label, int1, label2);
+            } else if (Arrays.equals(constructor.getParameterTypes(), new Class[]{String.class, int.class})) {
+                instance = (Instruction) constructor.newInstance(label, int1);
+            } else if (Arrays.equals(constructor.getParameterTypes(), new Class[]{String.class, int.class, int.class})) {
+                instance = (Instruction) constructor.newInstance(label, int1, int2);
+            } else if (Arrays.equals(constructor.getParameterTypes(), new Class[]{String.class, int.class, int.class, int.class})) {
+                instance = (Instruction) constructor.newInstance(label, int1, int2, int3);
+            }
         }
-        return null;
+        
+        return instance;
     }
 
     /*
