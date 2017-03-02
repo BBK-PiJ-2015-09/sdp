@@ -2,10 +2,6 @@ public class BnzInstruction extends Instruction {
     private int register;
     private String next_label;
 
-    public BnzInstruction(String label, String op) {
-        super(label, op);
-    }
-
     public BnzInstruction(String label, int register, String next_label) {
         super(label, "bnz");
         this.register = register;
