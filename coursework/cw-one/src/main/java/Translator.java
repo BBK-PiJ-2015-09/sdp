@@ -94,9 +94,6 @@ public class Translator {
                 return (Instruction) klass.getConstructor(label.getClass(), int.class, int.class, int.class).newInstance(label, int1, int2, int3);
         }
 
-        // You will have to write code here for the other instructions.
-
-        return null;
     }
 
     /*
