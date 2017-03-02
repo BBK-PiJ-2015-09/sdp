@@ -70,15 +70,13 @@ public class Translator {
         return true;
     }
 
-    // line should consist of an MML instruction, with its label already
+    // line should consist of an SML instruction, with its label already
     // removed. Translate line into an instruction with label label
     // and return the instruction
     public Instruction getInstruction(String label) throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
-        if (line.equals("")) {
-            return null;
-        } else {
-            Instruction instance = null;
-            for(Constructor constructor : Class.forName(capitalise(scan()) + "Instruction").getConstructors()) {
+        Instruction instance = null;
+        if (!line.equals("")) {
+            for (Constructor constructor : Class.forName(capitalise(scan()) + "Instruction").getConstructors()) {
                 if (Arrays.equals(constructor.getParameterTypes(), new Class[]{String.class, int.class, String.class})) {
                     instance = (Instruction) constructor.newInstance(label, scanInt(), scan());
                 } else if (Arrays.equals(constructor.getParameterTypes(), new Class[]{String.class, int.class})) {
@@ -89,8 +87,8 @@ public class Translator {
                     instance = (Instruction) constructor.newInstance(label, scanInt(), scanInt(), scanInt());
                 }
             }
-            return instance;
         }
+        return instance;
     }
 
     /*
