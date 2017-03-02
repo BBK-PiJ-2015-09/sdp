@@ -84,14 +84,14 @@ public class Translator {
         String label2 = scan();
 
         switch (ins) {
-            case "Lin":
-                return (Instruction) klass.getConstructor(label.getClass(), int.class, int.class).newInstance(label, int1, int2);
             case "Bnz":
-                return (Instruction) klass.getConstructor(label.getClass(), int.class, label2.getClass()).newInstance(label, int1, label2);
+                return (Instruction) klass.getConstructors()[1].newInstance(label, int1, label2);
             case "Out":
-                return (Instruction) klass.getConstructor(label.getClass(), int.class).newInstance(label, int1);
+                return (Instruction) klass.getConstructors()[1].newInstance(label, int1);
+            case "Lin":
+                return (Instruction) klass.getConstructors()[1].newInstance(label, int1, int2);
             default:
-                return (Instruction) klass.getConstructor(label.getClass(), int.class, int.class, int.class).newInstance(label, int1, int2, int3);
+                return (Instruction) klass.getConstructors()[1].newInstance(label, int1, int2, int3);
         }
 
     }
