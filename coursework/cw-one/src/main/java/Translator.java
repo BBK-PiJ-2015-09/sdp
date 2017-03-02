@@ -73,14 +73,6 @@ public class Translator {
     // removed. Translate line into an instruction with label label
     // and return the instruction
     public Instruction getInstruction(String label) throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
-        int s1; // Possible operands of the instruction
-        int s2;
-        int r;
-        int x;
-        int parameters;
-        Constructor<?>[] constructors;
-        Constructor constructor;
-
         if (line.equals(""))
             return null;
 
@@ -91,52 +83,13 @@ public class Translator {
             case "Sub":
             case "Mul":
             case "Div":
-                r = scanInt();
-                s1 = scanInt();
-                s2 = scanInt();
-                parameters = 4;
-                constructors = Class.forName(ins + "Instruction").getConstructors();
-                constructor = constructors[0];
-                for(int i = 0; i < constructors.length; i++) {
-                    if (constructors[i].getParameters().length == parameters) {
-                        constructor = constructors[i];
-                    }
-                }
-                return (Instruction) constructor.newInstance(label, r, s1, s2);
+                return (Instruction) Class.forName(ins + "Instruction").getConstructor(String.class, int.class, int.class, int.class).newInstance(label, scanInt(), scanInt(), scanInt());
             case "Lin":
-                r = scanInt();
-                s1 = scanInt();
-                parameters = 3;
-                constructors = Class.forName(ins + "Instruction").getConstructors();
-                constructor = constructors[0];
-                for(int i = 0; i < constructors.length; i++) {
-                    if (constructors[i].getParameters().length == parameters) {
-                        constructor = constructors[i];
-                    }
-                }
-                return (Instruction) constructor.newInstance(label, r, s1);
+                return (Instruction) Class.forName(ins + "Instruction").getConstructor(String.class, int.class, int.class).newInstance(label, scanInt(), scanInt());
             case "Bnz":
-                s1 = scanInt();
-                parameters = 3;
-                constructors = Class.forName(ins + "Instruction").getConstructors();
-                constructor = constructors[0];
-                for(int i = 0; i < constructors.length; i++) {
-                    if (constructors[i].getParameters().length == parameters) {
-                        constructor = constructors[i];
-                    }
-                }
-                return (Instruction) constructor.newInstance(label, s1, scan());
+                return (Instruction) Class.forName(ins + "Instruction").getConstructor(String.class, int.class, String.class).newInstance(label, scanInt(), scan());
             case "Out":
-                s1 = scanInt();
-                parameters = 2;
-                constructors = Class.forName(ins + "Instruction").getConstructors();
-                constructor = constructors[0];
-                for(int i = 0; i < constructors.length; i++) {
-                    if (constructors[i].getParameters().length == parameters) {
-                        constructor = constructors[i];
-                    }
-                }
-                return (Instruction) constructor.newInstance(label, s1);
+                return (Instruction) Class.forName(ins + "Instruction").getConstructor(String.class, int.class).newInstance(label, scanInt());
         }
 
         // You will have to write code here for the other instructions.
