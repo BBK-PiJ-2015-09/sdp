@@ -76,7 +76,7 @@ public class Translator {
     public Instruction getInstruction(String label) throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
         Instruction instance = null;
         if (!line.equals("")) {
-            for (Constructor constructor : Class.forName(capitalise(scan()) + "Instruction").getConstructors()) {
+            for (Constructor constructor : getConstructors()) {
                 if (Arrays.equals(constructor.getParameterTypes(), new Class[]{String.class, int.class, String.class})) {
                     instance = (Instruction) constructor.newInstance(label, scanInt(), scan());
                 } else if (Arrays.equals(constructor.getParameterTypes(), new Class[]{String.class, int.class})) {
@@ -89,6 +89,13 @@ public class Translator {
             }
         }
         return instance;
+    }
+
+  /*
+  * Get the name of the instruction and return its constructors.
+  */
+    private Constructor[] getConstructors() throws ClassNotFoundException {
+        return Class.forName(capitalise(scan()) + "Instruction").getConstructors();
     }
 
     /*
