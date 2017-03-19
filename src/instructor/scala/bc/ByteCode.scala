@@ -2,6 +2,8 @@ package bc
 
 import vm.VirtualMachine
 
+import scala.util.control.Exception.By
+
 /**
   * An exception representing an invalid bytecode. This can be used
   * in any circumstance where a bytecode might be invalid.
@@ -57,3 +59,4 @@ trait ByteCode extends ByteCodeValues {
     */
   def execute(vm: VirtualMachine): VirtualMachine
 }
+
