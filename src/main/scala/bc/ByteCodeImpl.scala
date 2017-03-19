@@ -97,6 +97,16 @@ class Iswap extends ByteCode {
   }
 }
 
+class Idup extends ByteCode {
+  override val code: Byte = bytecode("idup")
+
+  override def execute(vm: VirtualMachine) = {
+    val x = vm.pop._1
+    vm.push(x)
+    vm.push(x)
+  }
+}
+
 class Print extends ByteCode {
   override val code: Byte = bytecode("print")
 
