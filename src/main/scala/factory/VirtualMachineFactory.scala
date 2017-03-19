@@ -47,7 +47,16 @@ object VirtualMachineFactory {
         * @param file the file to parse
         * @return an instruction list
         */
-      override def parse(file: String) : InstructionList = ???
+      override def parse(file: String) : InstructionList = {
+        import scala.io.Source
+
+        var concatenated = ""
+        for (line <- Source.fromFile(file).getLines()) {
+          concatenated = concatenated + "\n" + line
+        }
+        concatenated = concatenated.substring(1)
+        parseString(concatenated)
+      }
     }
   }
 
