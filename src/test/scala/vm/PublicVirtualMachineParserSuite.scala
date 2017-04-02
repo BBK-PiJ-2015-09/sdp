@@ -28,7 +28,7 @@ class PublicVirtualMachineParserSuite extends FunSuite with ByteCodeValues {
   }
 
   test("[4] vm parser should detect a program with invalid bytecode") {
-    intercept[InvalidBytecodeException] {
+      intercept[InvalidBytecodeException] {
       val code = vmp.parse("programs/p04-bad-program.vm")
     }
   }
