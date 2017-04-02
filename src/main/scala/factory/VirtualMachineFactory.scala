@@ -1,6 +1,6 @@
 package factory
 
-import bc._
+import bc.{InvalidBytecodeException, _}
 import vendor.{Instruction, ProgramParser}
 import vm.{VirtualMachine, VirtualMachineParser}
 
@@ -157,7 +157,11 @@ object VirtualMachineFactory {
             bytelist += arg.asInstanceOf[Byte]
           }
         } else {
-          bytelist += bytecode(i.name)
+          try {
+            bytelist += bytecode(i.name)
+          } catch {
+            case exc: NoSuchElementException => throw new bc.InvalidBytecodeException("You fucked it!")
+          }
         }
       }
 
