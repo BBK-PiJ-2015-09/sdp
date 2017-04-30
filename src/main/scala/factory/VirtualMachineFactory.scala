@@ -15,40 +15,7 @@ object VirtualMachineFactory {
 
   def vendorParser: ProgramParser = new ProgramParserImpl()
 
-  def byteCodeParser: ByteCodeParser = {
-    new ByteCodeParser {
-      /**
-        * Parses a vector of `Byte` into a vector of `ByteCode`.
-        *
-        * You should use [[ByteCodeValues.bytecode]] to help translate
-        * the individual `Byte`s into a corresponding [[ByteCode]].
-        *
-        * @param bc a vector of bytes representing bytecodes
-        * @return a vector of `ByteCode` objects
-        */
-      override def parse(bc: Vector[Byte]) : Vector[ByteCode] = {
-        val bcf = VirtualMachineFactory.byteCodeFactory
-        import scala.collection.mutable.ListBuffer
-        var byteCodeList = new ListBuffer[ByteCode]()
-
-        var iconst = false
-
-        for (code <- bc) {
-          if (iconst) {
-            byteCodeList += bcf.make(1, code)
-            iconst = false
-          } else {
-            if (code != 1) {
-              byteCodeList += bcf.make(code)
-            } else {
-              iconst = true
-            }
-          }
-        }
-        byteCodeList.toVector
-      }
-    }
-  }
+  def byteCodeParser: ByteCodeParser = new ByteCodeParserImpl()
 
   // TODO
   def virtualMachineParser: VirtualMachineParser = {
