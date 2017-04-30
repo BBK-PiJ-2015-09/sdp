@@ -20,7 +20,7 @@ public class BatteryTest {
     int calls = 10;
     int expectedLevel = 0;
     for(int i = 1; i <= calls; i++) {
-      battery.getBatteryPercentage();
+      battery.call();
     }
     assertEquals(expectedLevel, battery.call(), 0);
   }
