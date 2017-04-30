@@ -21,10 +21,10 @@ class ByteCodeParserImpl extends ByteCodeParser {
 
     for (code <- bc) {
       if (iconst) {
-        byteCodeList += bcf.make(1, code)
+        byteCodeList += bcf.make(bytecode("iconst"), code)
         iconst = false
       } else {
-        if (code != 1) {
+        if(code != bytecode("iconst")) {
           byteCodeList += bcf.make(code)
         } else {
           iconst = true
