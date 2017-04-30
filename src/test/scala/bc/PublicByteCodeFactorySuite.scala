@@ -22,6 +22,18 @@ class PublicByteCodeFactorySuite extends FunSuite with ByteCodeValues {
     intercept[InvalidBytecodeException] {
       bcf.make(99)
     }
+
+    intercept[InvalidBytecodeException] {
+      bcf.make(0)
+    }
+
+    intercept[InvalidBytecodeException] {
+      bcf.make(13)
+    }
+
+    intercept[InvalidBytecodeException] {
+      bcf.make(0)
+    }
   }
 
 }
