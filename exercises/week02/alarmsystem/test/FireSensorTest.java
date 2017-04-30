@@ -6,7 +6,7 @@ import static org.junit.Assert.assertEquals;
 public class FireSensorTest {
 
   @Test
-  public void testSometimesReturnsTrue() {
+  public void testIsSometimesTriggered() {
     FireSensor sensor = new FireSensor();
     int attempts = 20;
     int trueCount = 0;
