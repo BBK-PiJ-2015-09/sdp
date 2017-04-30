@@ -2,7 +2,6 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-
 public class FireSensorTest {
 
   @Test
@@ -41,5 +40,16 @@ public class FireSensorTest {
       expectedLevel -= 10;
       assertEquals(expectedLevel, sensor.getBatteryPercentage(), 0);
     }
+  }
+
+  @Test
+  public void testBatteryBottom() {
+    FireSensor sensor = new FireSensor();
+    int attempts = 20;
+    int expectedLevel = 0;
+    for(int i = 1; i <= attempts; i++) {
+      sensor.getBatteryPercentage();
+    }
+    assertEquals(expectedLevel, sensor.getBatteryPercentage(), 0);
   }
 }
