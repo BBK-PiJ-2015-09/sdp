@@ -11,7 +11,7 @@ public class Trigger {
     return state == 1;
   }
 
-  public void changeState() {
+  private void changeState() {
     if (state == rate) {
       state = 1;
     } else {
