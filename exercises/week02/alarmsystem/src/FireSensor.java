@@ -1,5 +1,3 @@
-import java.util.Random;
-
 public class FireSensor implements Sensor {
   private double battery = 100;
   private int history = 1;
