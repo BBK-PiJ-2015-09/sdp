@@ -1,6 +1,6 @@
 package bc
 
-class ByteCodeFactoryImpl extends ByteCodeFactory {
+class ByteCodeFactoryImpl extends ByteCodeFactory with ByteCodeValues {
   /**
     * Returns a [[ByteCode]].
     *
@@ -17,18 +17,18 @@ class ByteCodeFactoryImpl extends ByteCodeFactory {
     * @return a new bytecode object
     */
   override def make(byte: Byte, args: Int*) : ByteCode = byte match {
-    case 1 => new Iconst(args(0))
-    case 2 => new Iadd
-    case 3 => new Isub
-    case 4 => new Imul
-    case 5 => new Idiv
-    case 6 => new Irem
-    case 7 => new Ineg
-    case 8 => new Iinc
-    case 9 => new Idec
-    case 10 => new Idup
-    case 11 => new Iswap
-    case 12 => new Print
+    case _ if byte equals bytecode("iconst") => new Iconst(args(0))
+    case _ if byte equals bytecode("iadd") => new Iadd
+    case _ if byte equals bytecode("isub") => new Isub
+    case _ if byte equals bytecode("imul") => new Imul
+    case _ if byte equals bytecode("idiv") => new Idiv
+    case _ if byte equals bytecode("irem") => new Irem
+    case _ if byte equals bytecode("ineg") => new Ineg
+    case _ if byte equals bytecode("iinc") => new Iinc
+    case _ if byte equals bytecode("idec") => new Idec
+    case _ if byte equals bytecode("idup") => new Idup
+    case _ if byte equals bytecode("iswap") => new Iswap
+    case _ if byte equals bytecode("print") => new Print
     case _ => throw new InvalidBytecodeException("bytecode incorrect: " + byte)
   }
 }
