@@ -31,11 +31,15 @@ public class FireSensorTest {
 //    String sensorType = sensor.getSensorType();
 //    assertEquals(null, sensorType);
 //  }
-//
-//  @Test
-//  public void testThatGetBatteryPercentageReturnsNegativeOne() {
-//    FireSensor sensor = new FireSensor();
-//    double batteryPercentage = sensor.getBatteryPercentage();
-//    assertEquals(-1.0, batteryPercentage, 0.01);
-//  }
+
+  @Test
+  public void testBatteryDrains() {
+    FireSensor sensor = new FireSensor();
+    int attempts = 10;
+    int expectedLevel = 100;
+    for(int i = 1; i <= attempts; i++) {
+      assertEquals(expectedLevel, sensor.getBatteryPercentage(), 0);
+      expectedLevel -= 10;
+    }
+  }
 }
