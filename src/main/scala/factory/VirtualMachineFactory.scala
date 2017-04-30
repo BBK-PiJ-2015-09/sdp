@@ -160,7 +160,7 @@ object VirtualMachineFactory {
           try {
             bytelist += bytecode(i.name)
           } catch {
-            case exc: NoSuchElementException => throw new bc.InvalidBytecodeException("You fucked it!")
+            case exc: NoSuchElementException => throw new bc.InvalidBytecodeException("Invalid Bytecode!")
           }
         }
       }
