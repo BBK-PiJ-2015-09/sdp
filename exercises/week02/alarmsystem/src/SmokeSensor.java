@@ -1,5 +1,5 @@
 public class SmokeSensor implements Sensor {
-  private double battery = 100;
+  private Battery battery = new Battery(20);
   private Trigger trigger = new Trigger(10);
 
   @Override
@@ -19,11 +19,7 @@ public class SmokeSensor implements Sensor {
 
   @Override
   public double getBatteryPercentage() {
-    if (battery == 0) {
-      return battery;
-    } else {
-      return battery -= 20;
-    }
+    return battery.call();
   }
 
 }
