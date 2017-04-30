@@ -14,23 +14,22 @@ class ByteCodeParserImpl extends ByteCodeParser {
     */
   override def parse(bc: Vector[Byte]) : Vector[ByteCode] = {
     val bcf = VirtualMachineFactory.byteCodeFactory
-    import scala.collection.mutable.ListBuffer
-    var byteCodeList = new ListBuffer[ByteCode]()
+    var byteCodeVector = Vector[ByteCode]()
 
     var iconst = false
 
     for (code <- bc) {
       if (iconst) {
-        byteCodeList += bcf.make(bytecode("iconst"), code)
+        byteCodeVector = byteCodeVector :+ bcf.make(bytecode("iconst"), code)
         iconst = false
       } else {
         if(code != bytecode("iconst")) {
-          byteCodeList += bcf.make(code)
+          byteCodeVector = byteCodeVector :+ bcf.make(code)
         } else {
           iconst = true
         }
       }
     }
-    byteCodeList.toVector
+    byteCodeVector
   }
 }
