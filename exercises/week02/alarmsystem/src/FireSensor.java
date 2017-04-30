@@ -22,7 +22,11 @@ public class FireSensor implements Sensor {
 
   @Override
   public double getBatteryPercentage() {
-    return battery -= 10;
+    if (battery == 0) {
+      return battery;
+    } else {
+      return battery -= 10;
+    }
   }
 
   private void incrementHistory() {
