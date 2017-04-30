@@ -1,8 +1,8 @@
-public class Repeater {
+public class Trigger {
   private int rate;
   private int state = 1;
 
-  public Repeater(int rate) {
+  public Trigger(int rate) {
     this.rate = rate;
   }
 

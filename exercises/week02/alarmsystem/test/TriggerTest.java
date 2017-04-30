@@ -2,17 +2,17 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class RepeaterTest {
+public class TriggerTest {
 
   @Test
   public void testIsSometimesTriggered() {
     int rate = 20;
     int trueCount = 0;
 
-    Repeater repeater = new Repeater(rate);
+    Trigger trigger = new Trigger(rate);
 
     for(int i = 1; i <= rate; i++) {
-      if(repeater.call()) {
+      if(trigger.call()) {
         trueCount++;
       }
     }
