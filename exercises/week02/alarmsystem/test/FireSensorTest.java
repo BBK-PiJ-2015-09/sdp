@@ -3,10 +3,10 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class FireSensorTest {
+  FireSensor sensor = new FireSensor();
 
   @Test
   public void testIsSometimesTriggered() {
-    FireSensor sensor = new FireSensor();
     int attempts = 20;
     int trueCount = 0;
     for(int i = 1; i <= attempts; i++) {
@@ -19,21 +19,18 @@ public class FireSensorTest {
 
   @Test
   public void testGetLocation() {
-    FireSensor sensor = new FireSensor();
     String location = sensor.getLocation();
     assertEquals("Hallway", location);
   }
 
   @Test
   public void testGetSensorType() {
-    FireSensor sensor = new FireSensor();
     String sensorType = sensor.getSensorType();
     assertEquals("FireSensor", sensorType);
   }
 
   @Test
   public void testBatteryDrains() {
-    FireSensor sensor = new FireSensor();
     int attempts = 10;
     int expectedLevel = 100;
     for(int i = 1; i <= attempts; i++) {
@@ -44,7 +41,6 @@ public class FireSensorTest {
 
   @Test
   public void testBatteryBottom() {
-    FireSensor sensor = new FireSensor();
     int attempts = 20;
     int expectedLevel = 0;
     for(int i = 1; i <= attempts; i++) {
