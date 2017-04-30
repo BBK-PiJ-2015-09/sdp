@@ -128,7 +128,6 @@ object VirtualMachineFactory {
     }
   }
 
-  // TODO
   def virtualMachineParser: VirtualMachineParser = {
     new VirtualMachineParser {/**
       * Returns a vector of [[bc.ByteCode]].
@@ -191,7 +190,6 @@ object VirtualMachineFactory {
     }
   }
 
-  // TODO
   def virtualMachine: VirtualMachine = {
     new VirtualMachine {
 
