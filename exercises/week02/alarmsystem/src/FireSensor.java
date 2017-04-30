@@ -1,7 +1,12 @@
+import java.util.Random;
+
 public class FireSensor implements Sensor {
+  private int history = 1;
+
   @Override
   public boolean isTriggered() {
-    return false;
+    incrementHistory();
+    return history == 1;
   }
 
   @Override
@@ -17,5 +22,13 @@ public class FireSensor implements Sensor {
   @Override
   public double getBatteryPercentage() {
     return -1;
+  }
+
+  private void incrementHistory() {
+      if (history == 20) {
+          history = 1;
+      } else {
+          history++;
+      }
   }
 }
