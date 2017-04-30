@@ -12,9 +12,7 @@ public class Battery {
   }
 
   private void decrement() {
-    if (state == 0) {
-      state = 0;
-    } else {
+    if (state > 0) {
       state -= rate;
     }
   }
