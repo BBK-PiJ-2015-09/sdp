@@ -38,15 +38,5 @@ public class SmokeSensorTest {
       assertEquals(expectedLevel, sensor.getBatteryPercentage(), 0);
     }
   }
-  
-  @Test
-  public void testBatteryBottom() {
-    int attempts = 20;
-    int expectedLevel = 0;
-    for(int i = 1; i <= attempts; i++) {
-      sensor.getBatteryPercentage();
-    }
-    assertEquals(expectedLevel, sensor.getBatteryPercentage(), 0);
-  }
 
 }
