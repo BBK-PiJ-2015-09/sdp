@@ -16,20 +16,19 @@ class ByteCodeParserImpl extends ByteCodeParser {
     val bcf = VirtualMachineFactory.byteCodeFactory
     var byteCodeVector = Vector[ByteCode]()
 
-    var iconst = false
+    var argument = false
 
     for (code <- bc) {
-      if (iconst) {
+      if (argument) {
         byteCodeVector = byteCodeVector :+ bcf.make(bytecode("iconst"), code)
-        iconst = false
+        argument = false
+      } else if(code == bytecode("iconst")) {
+        argument = true
       } else {
-        if(code != bytecode("iconst")) {
-          byteCodeVector = byteCodeVector :+ bcf.make(code)
-        } else {
-          iconst = true
-        }
+        byteCodeVector = byteCodeVector :+ bcf.make(code)
       }
     }
+
     byteCodeVector
   }
 }
