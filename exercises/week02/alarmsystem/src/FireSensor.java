@@ -1,6 +1,7 @@
 import java.util.Random;
 
 public class FireSensor implements Sensor {
+  private double battery = 100;
   private int history = 1;
 
   @Override
@@ -21,7 +22,7 @@ public class FireSensor implements Sensor {
 
   @Override
   public double getBatteryPercentage() {
-    return -1;
+    return battery -= 10;
   }
 
   private void incrementHistory() {

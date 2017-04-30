@@ -38,8 +38,8 @@ public class FireSensorTest {
     int attempts = 10;
     int expectedLevel = 100;
     for(int i = 1; i <= attempts; i++) {
-      assertEquals(expectedLevel, sensor.getBatteryPercentage(), 0);
       expectedLevel -= 10;
+      assertEquals(expectedLevel, sensor.getBatteryPercentage(), 0);
     }
   }
 }
