@@ -16,21 +16,21 @@ class VirtualMachineParserImpl extends VirtualMachineParser with ByteCodeValues 
   * @return a vector of bytecodes
   */
   override def parseString(str: String) : Vector[ByteCode] = {
-    val instructions = VirtualMachineFactory.vendorParser.parseString(str)
-    var bytelist = new ListBuffer[Byte]()
+    try {
+      val instructions = VirtualMachineFactory.vendorParser.parseString(str)
+      var bytelist = new ListBuffer[Byte]()
 
-    // use ByteCodeValues to turn instruction into a byte
-    for (i <- instructions) {
-      try {
+      // use ByteCodeValues to turn instruction into a byte
+      for (i <- instructions) {
         bytelist += bytecode(i.name)
-      } catch {
-        case _: NoSuchElementException => throw new bc.InvalidBytecodeException("Invalid Bytecode!")
+        if (i.name == "iconst") i.args.map(arg => bytelist += arg.asInstanceOf[Byte])
       }
 
-      if (i.name == "iconst") i.args.map(arg => bytelist += arg.asInstanceOf[Byte])
+      VirtualMachineFactory.byteCodeParser.parse(bytelist.toVector)
+    } catch {
+      case _: vendor.InvalidInstructionFormatException => throw new bc.InvalidBytecodeException("Invalid Bytecode!")
+      case _: NoSuchElementException => throw new bc.InvalidBytecodeException("Invalid Bytecode!")
     }
-
-    VirtualMachineFactory.byteCodeParser.parse(bytelist.toVector)
   }
 
   /**
