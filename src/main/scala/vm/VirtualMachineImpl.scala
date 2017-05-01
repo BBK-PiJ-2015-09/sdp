@@ -63,6 +63,8 @@ class VirtualMachineImpl extends VirtualMachine {
     *         new virtual machine
     */
   override def pop(): (Int, VirtualMachine) = {
+    if(myStack isEmpty) throw new MachineUnderflowException("Stack empty, cannot pop!")
+
     val myInt = myStack(0)
     myStack = myStack.drop(1)
     (myInt,this)

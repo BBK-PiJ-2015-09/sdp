@@ -13,6 +13,33 @@ class PublicVirtualMachineSuite extends FunSuite {
     val vm2 = vm.execute(bc)
   }
 
+  test("a virtual machine should execute a program and end with correct stack") {
+    val bc  = vmp.parse("programs/p05.vm")
+    var next = vm.executeOne(bc)
+    for(i <- 1 to 10) {
+      next = vm.executeOne(next._1)
+    }
+    assert(next._2.state.length == 1)
+    assert(next._2.state.head == 21)
+
+    for(i <- 1 to 6) {
+      next = vm.executeOne(next._1)
+    }
+
+    assert(next._2.state.length == 1)
+    assert(next._2.state.head == 4)
+
+    next = vm.executeOne(next._1)
+    assert(next._2.state.length == 0)
+  }
+
+  test("bad stack program should throw MachineUnderflowException") {
+    val bc  = vmp.parse("programs/p02-bad-stack.vm")
+    intercept[MachineUnderflowException] {
+      val vm2 = vm.execute(bc)
+    }
+  }
+
   test("[2] iconst should work correctly") {
     val bc  = vmp.parseString("iconst 1")
     val (bc2, vm2) = vm.executeOne(bc)
