@@ -4,6 +4,9 @@ import scala.collection.mutable.ListBuffer
 import bc.{ByteCode, ByteCodeValues}
 import factory.VirtualMachineFactory
 
+/**
+  * [[VirtualMachineParserImpl]] defines an implementation of [[VirtualMachineParser]].
+  */
 class VirtualMachineParserImpl extends VirtualMachineParser with ByteCodeValues {
   /**
   * Returns a vector of [[bc.ByteCode]].
