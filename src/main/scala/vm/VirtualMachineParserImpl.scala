@@ -1,6 +1,8 @@
 package vm
 
 import scala.collection.mutable.ListBuffer
+import scala.io.Source
+
 import bc.{ByteCode, ByteCodeValues}
 import factory.VirtualMachineFactory
 
@@ -47,13 +49,6 @@ class VirtualMachineParserImpl extends VirtualMachineParser with ByteCodeValues 
     * @return a vector of bytecodes
     */
   override def parse(file: String) = {
-    import scala.io.Source
-
-    var concatenated = ""
-    for (line <- Source.fromFile(file).getLines()) {
-      concatenated = concatenated + "\n" + line
-    }
-    concatenated = concatenated.substring(1)
-    parseString(concatenated)
+    parseString(Source.fromFile(file).mkString)
   }
 }
