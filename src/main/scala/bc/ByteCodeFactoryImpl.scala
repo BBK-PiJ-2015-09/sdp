@@ -1,5 +1,8 @@
 package bc
 
+/**
+  * [[ByteCodeFactoryImpl]] defines an implementation of [[ByteCodeFactory]].
+  */
 class ByteCodeFactoryImpl extends ByteCodeFactory with ByteCodeValues {
   /**
     * Returns a [[ByteCode]].
