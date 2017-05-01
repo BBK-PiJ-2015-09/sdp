@@ -2,6 +2,9 @@ package bc
 
 import factory.VirtualMachineFactory
 
+/**
+  * [[ByteCodeParserImpl]] defines an implementation of [[ByteCodeParser]].
+  */
 class ByteCodeParserImpl extends ByteCodeParser {
   /**
     * Parses a vector of `Byte` into a vector of `ByteCode`.
