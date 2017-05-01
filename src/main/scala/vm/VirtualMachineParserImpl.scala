@@ -2,9 +2,9 @@ package vm
 
 import scala.collection.mutable.ListBuffer
 import scala.io.Source
-
 import bc.{ByteCode, ByteCodeValues}
 import factory.VirtualMachineFactory
+import vendor.Instruction
 
 /**
   * [[VirtualMachineParserImpl]] defines an implementation of [[VirtualMachineParser]].
@@ -22,16 +22,7 @@ class VirtualMachineParserImpl extends VirtualMachineParser with ByteCodeValues 
   */
   override def parseString(str: String) : Vector[ByteCode] = {
     try {
-      val instructions = VirtualMachineFactory.vendorParser.parseString(str)
-      var bytelist = new ListBuffer[Byte]()
-
-      // use ByteCodeValues to turn instruction into a byte
-      for (i <- instructions) {
-        bytelist += bytecode(i.name)
-        if (i.name == "iconst") i.args.map(arg => bytelist += arg.asInstanceOf[Byte])
-      }
-
-      VirtualMachineFactory.byteCodeParser.parse(bytelist.toVector)
+      toBytecodes(VirtualMachineFactory.vendorParser.parseString(str))
     } catch {
       case _: vendor.InvalidInstructionFormatException => throw new bc.InvalidBytecodeException("Invalid Bytecode!")
       case _: NoSuchElementException => throw new bc.InvalidBytecodeException("Invalid Bytecode!")
@@ -51,4 +42,23 @@ class VirtualMachineParserImpl extends VirtualMachineParser with ByteCodeValues 
   override def parse(file: String) = {
     parseString(Source.fromFile(file).mkString)
   }
+
+  /**
+    * Parses a vector of Instructions
+    * into a vector of ByteCodes.
+    *
+    * @param instructions the instructions to parse
+    * @return a vector of bytecodes
+    */
+  private def toBytecodes(instructions: Vector[Instruction]) : Vector[ByteCode] = {
+    var bytelist = new ListBuffer[Byte]()
+
+    for (i <- instructions) {
+      bytelist += bytecode(i.name)
+      if (i.name == "iconst") i.args.map(arg => bytelist += arg.asInstanceOf[Byte])
+    }
+
+    VirtualMachineFactory.byteCodeParser.parse(bytelist.toVector)
+  }
 }
+
