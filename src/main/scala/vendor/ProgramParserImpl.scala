@@ -1,5 +1,7 @@
 package vendor
 
+import scala.io.Source
+
 class ProgramParserImpl extends ProgramParser {
   /**
     * Parses a string representation of a bytecode program
@@ -20,8 +22,6 @@ class ProgramParserImpl extends ProgramParser {
     * @return an instruction list
     */
   override def parse(file: String) : InstructionList = {
-    import scala.io.Source
-
     var concatenated = ""
     for (line <- Source.fromFile(file).getLines()) {
       concatenated = concatenated + "\n" + line
