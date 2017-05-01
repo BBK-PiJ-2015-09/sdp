@@ -2,6 +2,9 @@ package vm
 
 import bc.ByteCode
 
+/**
+  * [[VirtualMachineImpl]] defines an implementation of [[VirtualMachine]].
+  */
 class VirtualMachineImpl extends VirtualMachine {
   var myStack = Vector[Int]()
 
