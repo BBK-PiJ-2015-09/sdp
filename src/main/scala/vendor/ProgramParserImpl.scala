@@ -9,17 +9,15 @@ class ProgramParserImpl extends ProgramParser {
     * @return an instruction list
     */
   override def parseString(string: String) : InstructionList = {
-    val lines = string.split("\n")
     var output = Vector[Instruction]()
 
-    for (line <- lines) {
+    for (line <- string.split("\n")) {
       val split = line.split(" ")
-      if (split.length == 2) {
-        output = output :+ new Instruction(split(0), Vector(split(1).toInt))
-      } else {
-        output = output :+ new Instruction(split(0), Vector())
-      }
+      val code = split(0)
+      val argument = if (split.length > 1) Vector(split(1).toInt) else Vector()
+      output = output :+ new Instruction(code, argument)
     }
+
     output
   }
 
