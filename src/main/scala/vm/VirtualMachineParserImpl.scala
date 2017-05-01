@@ -1,9 +1,10 @@
 package vm
 
-import bc.{ByteCode, Iadd}
+import scala.collection.mutable.ListBuffer
+import bc.{ByteCode, ByteCodeValues, Iadd}
 import factory.VirtualMachineFactory
 
-class VirtualMachineParserImpl extends VirtualMachineParser {/**
+class VirtualMachineParserImpl extends VirtualMachineParser with ByteCodeValues {/**
   * Returns a vector of [[bc.ByteCode]].
   *
   * This method parses a string into a vector of bytecode objects.
@@ -15,27 +16,17 @@ class VirtualMachineParserImpl extends VirtualMachineParser {/**
   */
   override def parseString(str: String) : Vector[ByteCode] = {
     val instructions = VirtualMachineFactory.vendorParser.parseString(str)
-
-    import scala.collection.mutable.ListBuffer
     var bytelist = new ListBuffer[Byte]()
-
-    // Refactor this
-    val bytecode = new Iadd().bytecode
 
     // use ByteCodeValues to turn instruction into a byte
     for (i <- instructions) {
-      if (i.name == "iconst") {
+      try {
         bytelist += bytecode(i.name)
-        for (arg <- i.args) {
-          bytelist += arg.asInstanceOf[Byte]
-        }
-      } else {
-        try {
-          bytelist += bytecode(i.name)
-        } catch {
-          case exc: NoSuchElementException => throw new bc.InvalidBytecodeException("Invalid Bytecode!")
-        }
+      } catch {
+        case exc: NoSuchElementException => throw new bc.InvalidBytecodeException("Invalid Bytecode!")
       }
+
+      if (i.name == "iconst") i.args.map(arg => bytelist += arg.asInstanceOf[Byte])
     }
 
     VirtualMachineFactory.byteCodeParser.parse(bytelist.toVector)

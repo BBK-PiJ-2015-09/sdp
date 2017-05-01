@@ -11,7 +11,7 @@ class ProgramParserImpl extends ProgramParser {
     * @return an instruction list
     */
   override def parseString(string: String) : InstructionList = {
-    Vector[Instruction]() ++ string.split("\n").map(line => instruction(line.split(" ")))
+    toVector(Source.fromString(string))
   }
 
   /**
@@ -22,10 +22,19 @@ class ProgramParserImpl extends ProgramParser {
     * @return an instruction list
     */
   override def parse(file: String) : InstructionList = {
-    Vector[Instruction]() ++ Source.fromFile(file).getLines().map(line => instruction(line.split(" ")))
+    toVector(Source.fromFile(file))
   }
 
-  private def instruction(line: Array[String]) : Instruction = {
+  private def toVector(source: Source) : InstructionList = {
+    Vector[Instruction]() ++ toIterator(source)
+  }
+
+  private def toIterator(source: Source) : Iterator[Instruction] = {
+    source.getLines().map(line => toInstruction(line.split(" ")))
+  }
+
+  private def toInstruction(line: Array[String]) : Instruction = {
     new Instruction(line(0), if (line.length > 1) Vector(line(1).toInt) else Vector())
   }
+
 }
