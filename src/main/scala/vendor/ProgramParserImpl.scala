@@ -22,12 +22,7 @@ class ProgramParserImpl extends ProgramParser {
     * @return an instruction list
     */
   override def parse(file: String) : InstructionList = {
-    var concatenated = ""
-    for (line <- Source.fromFile(file).getLines()) {
-      concatenated = concatenated + "\n" + line
-    }
-    concatenated = concatenated.substring(1)
-    parseString(concatenated)
+    Vector[Instruction]() ++ Source.fromFile(file).getLines().map(line => instruction(line.split(" ")))
   }
 
   private def instruction(line: Array[String]) : Instruction = {
