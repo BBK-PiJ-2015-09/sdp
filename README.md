@@ -1,14 +1,14 @@
-#Software Design and Programming
+# Software Design and Programming
 
-##Assignment Two - Virtual Machine
+## Assignment Two - Virtual Machine
 
-###Spring Term - 2017
+### Spring Term - 2017
 
-####Team members:
+#### Team members:
 - Harry Wright
 - Alex Rudall
 
-####About
+#### About
 The purpose of this project is to complete the 
 implementation of a stack-based virtual machine 
 that executes a small set of “bytecode” instructions. 
@@ -22,7 +22,7 @@ These commands/instructions perform operations
 on a stack-based virtual machine to 
 execute simple computations. 
 
-####Testing
+#### Testing
 Unit testing was implemented in ScalaTest.
 The provided tests were extended upon to improve
 coverage.
