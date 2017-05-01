@@ -4,6 +4,9 @@ import bc.ByteCodeValues
 
 import scala.io.Source
 
+/**
+  * [[ProgramParserImpl]] defines an implementation of [[ProgramParser]].
+  */
 class ProgramParserImpl extends ProgramParser with ByteCodeValues {
   /**
     * Parses a string representation of a bytecode program
@@ -27,14 +30,33 @@ class ProgramParserImpl extends ProgramParser with ByteCodeValues {
     toVector(Source.fromFile(file))
   }
 
+  /**
+    * Parses a source object into an `InstructionList`
+    *
+    * @param source
+    * @return an instruction list
+    */
   private def toVector(source: Source) : InstructionList = {
     Vector[Instruction]() ++ toIterator(source)
   }
 
+  /**
+    * Parses a source object into an Iterator of Instructions
+    *
+    * @param source
+    * @return an Iterator of Instructions
+    */
   private def toIterator(source: Source) : Iterator[Instruction] = {
     source.getLines().map(line => toInstruction(line.split(" ")))
   }
 
+  /**
+    * Parses an Array of Strings representing a single instruction
+    * with arguments into an Instruction object
+    *
+    * @param line an array of String objects
+    * @return a single Instruction
+    */
   private def toInstruction(line: Array[String]) : Instruction = {
     if(!bytecode.contains(line(0))) throw new InvalidInstructionFormatException("Invalid Bytecode!")
 
