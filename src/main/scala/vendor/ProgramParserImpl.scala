@@ -9,16 +9,7 @@ class ProgramParserImpl extends ProgramParser {
     * @return an instruction list
     */
   override def parseString(string: String) : InstructionList = {
-    var output = Vector[Instruction]()
-
-    for (line <- string.split("\n")) {
-      val split = line.split(" ")
-      val code = split(0)
-      val argument = if (split.length > 1) Vector(split(1).toInt) else Vector()
-      output = output :+ new Instruction(code, argument)
-    }
-
-    output
+    Vector[Instruction]() ++ string.split("\n").map(line => instruction(line.split(" ")))
   }
 
   /**
@@ -37,5 +28,9 @@ class ProgramParserImpl extends ProgramParser {
     }
     concatenated = concatenated.substring(1)
     parseString(concatenated)
+  }
+
+  private def instruction(line: Array[String]) : Instruction = {
+    new Instruction(line(0), if (line.length > 1) Vector(line(1).toInt) else Vector())
   }
 }
