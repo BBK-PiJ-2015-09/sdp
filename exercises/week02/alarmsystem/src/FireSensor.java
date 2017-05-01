@@ -1,4 +1,4 @@
-public class FireSensor implements Sensor {
+public class FireSensor implements BatterySensor {
   private Battery battery = new Battery(10);
   private Trigger trigger = new Trigger(20);
 
