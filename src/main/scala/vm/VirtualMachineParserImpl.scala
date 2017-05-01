@@ -1,5 +1,7 @@
 package vm
 
+import scala.collection.mutable.ListBuffer
+
 import bc.{ByteCode, Iadd}
 import factory.VirtualMachineFactory
 
@@ -16,7 +18,6 @@ class VirtualMachineParserImpl extends VirtualMachineParser {/**
   override def parseString(str: String) : Vector[ByteCode] = {
     val instructions = VirtualMachineFactory.vendorParser.parseString(str)
 
-    import scala.collection.mutable.ListBuffer
     var bytelist = new ListBuffer[Byte]()
 
     // Refactor this
