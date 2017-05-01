@@ -2,10 +2,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ControlUnit {
-  List<Sensor> sensors = new ArrayList<Sensor>();
+  List<Sensor> sensors;
 
-  public void add(Sensor sensor) {
-    sensors.add(sensor);
+  public ControlUnit(List<Sensor> sensors) {
+    this.sensors = sensors;
   }
 
   public void pollSensors() {
