@@ -47,4 +47,10 @@ class PublicVendorParserSuite extends FunSuite {
     assert(insts(3).name == "print")
     assert(insts(3).args == Vector())
   }
+
+  test("should throw InvalidInstructionFormatException when parsing invalid instruction") {
+    intercept[InvalidInstructionFormatException] {
+      val insts = vp.parse("programs/p04-bad-program.vm")
+    }
+  }
 }
