@@ -30,6 +30,12 @@ public class FireSensorTest {
   }
 
   @Test
+  public void testGetSensorPurpose() {
+    String sensorPurpose = sensor.getSensorPurpose();
+    assertEquals("Hazard", sensorPurpose);
+  }
+
+  @Test
   public void testBatteryDrains() {
     int attempts = 10;
     int expectedLevel = 100;

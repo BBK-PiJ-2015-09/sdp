@@ -18,6 +18,9 @@ public class SmokeSensor implements BatterySensor {
   }
 
   @Override
+  public String getSensorPurpose() { return "Hazard"; }
+
+  @Override
   public double getBatteryPercentage() {
     return battery.call();
   }
