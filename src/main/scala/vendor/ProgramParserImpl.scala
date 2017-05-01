@@ -26,7 +26,11 @@ class ProgramParserImpl extends ProgramParser {
   }
 
   private def toVector(source: Source) : InstructionList = {
-    Vector[Instruction]() ++ source.getLines().map(line => toInstruction(line.split(" ")))
+    Vector[Instruction]() ++ toIterator(source)
+  }
+
+  private def toIterator(source: Source) : Iterator[Instruction] = {
+    source.getLines().map(line => toInstruction(line.split(" ")))
   }
 
   private def toInstruction(line: Array[String]) : Instruction = {
