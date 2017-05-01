@@ -24,7 +24,7 @@ class VirtualMachineParserImpl extends VirtualMachineParser with ByteCodeValues 
       try {
         bytelist += bytecode(i.name)
       } catch {
-        case exc: NoSuchElementException => throw new bc.InvalidBytecodeException("Invalid Bytecode!")
+        case _: NoSuchElementException => throw new bc.InvalidBytecodeException("Invalid Bytecode!")
       }
 
       if (i.name == "iconst") i.args.map(arg => bytelist += arg.asInstanceOf[Byte])

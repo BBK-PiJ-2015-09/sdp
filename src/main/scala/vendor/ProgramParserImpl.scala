@@ -1,8 +1,10 @@
 package vendor
 
+import bc.ByteCodeValues
+
 import scala.io.Source
 
-class ProgramParserImpl extends ProgramParser {
+class ProgramParserImpl extends ProgramParser with ByteCodeValues {
   /**
     * Parses a string representation of a bytecode program
     * into an `InstructionList`.
@@ -34,6 +36,8 @@ class ProgramParserImpl extends ProgramParser {
   }
 
   private def toInstruction(line: Array[String]) : Instruction = {
+    if(!bytecode.contains(line(0))) throw new InvalidInstructionFormatException("Invalid Bytecode!")
+
     new Instruction(line(0), if (line.length > 1) Vector(line(1).toInt) else Vector())
   }
 
