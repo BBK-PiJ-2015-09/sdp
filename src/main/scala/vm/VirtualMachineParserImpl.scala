@@ -1,11 +1,10 @@
 package vm
 
 import scala.collection.mutable.ListBuffer
-
-import bc.{ByteCode, Iadd}
+import bc.{ByteCode, ByteCodeValues, Iadd}
 import factory.VirtualMachineFactory
 
-class VirtualMachineParserImpl extends VirtualMachineParser {/**
+class VirtualMachineParserImpl extends VirtualMachineParser with ByteCodeValues {/**
   * Returns a vector of [[bc.ByteCode]].
   *
   * This method parses a string into a vector of bytecode objects.
@@ -19,9 +18,6 @@ class VirtualMachineParserImpl extends VirtualMachineParser {/**
     val instructions = VirtualMachineFactory.vendorParser.parseString(str)
 
     var bytelist = new ListBuffer[Byte]()
-
-    // Refactor this
-    val bytecode = new Iadd().bytecode
 
     // use ByteCodeValues to turn instruction into a byte
     for (i <- instructions) {
