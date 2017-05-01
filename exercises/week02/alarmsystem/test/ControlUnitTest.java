@@ -8,7 +8,7 @@ public class ControlUnitTest {
   public void testAdd() {
     ControlUnit controller = new ControlUnit();
     controller.add(new FireSensor());
-    assertEquals(1, controller.sensors.length);
+    assertEquals(1, controller.sensors.size());
   }
 
 }
