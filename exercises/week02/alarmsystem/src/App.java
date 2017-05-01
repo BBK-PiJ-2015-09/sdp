@@ -7,6 +7,8 @@ public class App {
 
   public static void main(String[] args) throws IOException {
     ControlUnit controlUnit = new ControlUnit();
+    controlUnit.add(new FireSensor());
+    controlUnit.add(new SmokeSensor());
 
     Scanner scanner = new Scanner(System.in);
     String input = "";
