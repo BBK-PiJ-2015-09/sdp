@@ -49,4 +49,84 @@ class PublicVirtualMachineSuite extends FunSuite {
     assert(next._2.state(0) == 1)
     assert(next._2.state(1) == 2)
   }
+
+  test("idec should work properly") {
+    val bc  = vmp.parseString("iconst 2\nidec\nidec")
+    var next = vm.executeOne(bc)
+    assert(next._2.state.head == 2)
+    next = next._2.executeOne(next._1)
+    assert(next._2.state.head == 1)
+    next = next._2.executeOne(next._1)
+    assert(next._2.state.head == 0)
+  }
+
+  test("idiv should work properly") {
+    val bc  = vmp.parseString("iconst 3\niconst 6\nidiv")
+    var next = vm.executeOne(bc)
+    assert(next._2.state.head == 3)
+    next = next._2.executeOne(next._1)
+    assert(next._2.state.head == 6)
+    next = next._2.executeOne(next._1)
+    assert(next._2.state.head == 2)
+  }
+
+  test("idup should work properly") {
+    val bc  = vmp.parseString("iconst 20\nidup")
+    var next = vm.executeOne(bc)
+    assert(next._2.state(1) != 20)
+    assert(next._2.state.head == 20)
+    next = next._2.executeOne(next._1)
+    assert(next._2.state(1) == 20)
+    assert(next._2.state.head == 20)
+  }
+
+  test("iinc should work properly") {
+    val bc  = vmp.parseString("iconst 2\niinc\niinc")
+    var next = vm.executeOne(bc)
+    assert(next._2.state.head == 2)
+    next = next._2.executeOne(next._1)
+    assert(next._2.state.head == 3)
+    next = next._2.executeOne(next._1)
+    assert(next._2.state.head == 4)
+  }
+
+  test("imul should work properly") {
+    val bc  = vmp.parseString("iconst 3\niconst 6\nimul")
+    var next = vm.executeOne(bc)
+    assert(next._2.state.head == 3)
+    next = next._2.executeOne(next._1)
+    assert(next._2.state.head == 6)
+    next = next._2.executeOne(next._1)
+    assert(next._2.state.head == 18)
+  }
+
+  test("ineg should work properly") {
+    var bc = vmp.parseString("iconst 12\nineg\nineg")
+    var next = vm.executeOne(bc)
+    assert(next._2.state.head == 12)
+    next = next._2.executeOne(next._1)
+    assert(next._2.state.head == -12)
+    next = next._2.executeOne(next._1)
+    assert(next._2.state.head == 12)
+  }
+
+  test("irem should work properly when remainder") {
+    val bc  = vmp.parseString("iconst 2\niconst 5\nirem")
+    var next = vm.executeOne(bc)
+    assert(next._2.state.head == 2)
+    next = next._2.executeOne(next._1)
+    assert(next._2.state.head == 5)
+    next = next._2.executeOne(next._1)
+    assert(next._2.state.head == 1)
+  }
+
+  test("irem should work properly when no remainder") {
+    val bc  = vmp.parseString("iconst 2\niconst 100\nirem")
+    var next = vm.executeOne(bc)
+    assert(next._2.state.head == 2)
+    next = next._2.executeOne(next._1)
+    assert(next._2.state.head == 100)
+    next = next._2.executeOne(next._1)
+    assert(next._2.state.head == 0)
+  }
 }
