@@ -1,7 +1,7 @@
 package bc
 
 /**
-  * [[ByteCodeFactory]] defines a factory interface for creating
+  * [[ByteCodeFactory]] defines a factory trait for creating
   * [[ByteCode]] objects. You will need to extend this to provide
   * your own implementation of a [[ByteCodeFactory]].
   */
