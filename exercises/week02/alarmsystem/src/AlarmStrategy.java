@@ -1,5 +1,7 @@
 public interface AlarmStrategy {
-  String activate();
+  void activate();
+
+  void deactivate();
 
   boolean active();
 }
