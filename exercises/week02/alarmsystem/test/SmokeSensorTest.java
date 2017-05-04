@@ -12,7 +12,7 @@ public class SmokeSensorTest {
 
   @Test
   public void testStrategy() {
-    int attempts = 20;
+    int attempts = 10;
     for(int i = 1; i <= attempts; i++) { sensor.isTriggered(); }
     assertEquals(true, strategy.active());
   }
