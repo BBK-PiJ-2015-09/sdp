@@ -6,22 +6,25 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 public class FireSensorTest {
-  AlarmStrategy strategy = new FireStrategy();
-  List<AlarmStrategy> strategies = Arrays.asList(strategy);
+  AlarmStrategy fireStrategy = new FireStrategy();
+  AlarmStrategy ownerStrategy = new OwnerStrategy();
+  List<AlarmStrategy> strategies = Arrays.asList(fireStrategy, ownerStrategy);
   FireSensor sensor = new FireSensor(strategies);
 
   @Test
   public void testStrategy() {
     int attempts = 20;
     for(int i = 1; i <= attempts; i++) { sensor.isTriggered(); }
-    assertEquals(true, strategy.active());
+    assertEquals(true, fireStrategy.active());
+    assertEquals(true, ownerStrategy.active());
   }
 
   @Test
   public void testStrategyNotAlwaysActivated() {
     int attempts = 1;
     for(int i = 1; i <= attempts; i++) { sensor.isTriggered(); }
-    assertEquals(false, strategy.active());
+    assertEquals(false, fireStrategy.active());
+    assertEquals(false, ownerStrategy.active());
   }
 
   @Test
