@@ -1,5 +1,6 @@
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -9,7 +10,7 @@ public class App {
 
   public static void main(String[] args) throws IOException {
     List<Sensor> sensors = new ArrayList<>();
-    sensors.add(new FireSensor());
+    sensors.add(new FireSensor(Arrays.asList(new FireStrategy())));
     sensors.add(new SmokeSensor());
     ControlUnit controlUnit = new ControlUnit(sensors);
 
