@@ -1,8 +1,8 @@
 package counter
 
-import org.scalatest.FunSuite
+import org.scalatest.{BeforeAndAfter, FunSuite}
 
-class CounterTest extends FunSuite {
+class CounterTest extends FunSuite with BeforeAndAfter {
 
   var counter: Counter = _
 
