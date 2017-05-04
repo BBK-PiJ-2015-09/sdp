@@ -11,7 +11,7 @@ public class App {
   public static void main(String[] args) throws IOException {
     List<Sensor> sensors = new ArrayList<>();
     sensors.add(new FireSensor(Arrays.asList(new FireStrategy())));
-    sensors.add(new SmokeSensor());
+    sensors.add(new SmokeSensor(Arrays.asList(new FireStrategy())));
     ControlUnit controlUnit = new ControlUnit(sensors);
 
     List<Sensor> securitySensors = new ArrayList<>();

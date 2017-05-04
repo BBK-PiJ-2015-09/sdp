@@ -1,10 +1,19 @@
+import java.util.List;
+
 public class SmokeSensor implements BatterySensor {
   private Battery battery = new Battery(20);
   private Trigger trigger = new Trigger(10);
+  private List<AlarmStrategy> strategies;
+
+  public SmokeSensor(List<AlarmStrategy> strategies) {
+    this.strategies = strategies;
+  }
 
   @Override
   public boolean isTriggered() {
-    return trigger.call();
+    boolean triggered = trigger.call();
+    if (triggered) { for(AlarmStrategy alarm : strategies) { alarm.activate(); } }
+    return triggered;
   }
 
   @Override
