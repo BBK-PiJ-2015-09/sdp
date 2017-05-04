@@ -25,10 +25,10 @@ public class SecurityControlUnitTest {
     SecurityControlUnit controller = new SecurityControlUnit(sensors);
 
     SecurityControlUnit spy = spy(controller);
-    LocalDateTime night = LocalDateTime.of(2017, 05, 14, 8, 00, 00);
-    doReturn(night).when(spy).currentTime();
+    LocalDateTime day = LocalDateTime.now().withHour(8).withMinute(00).withSecond(00);
+    doReturn(day).when(spy).currentTime();
 
-    controller.pollSensors();
+    spy.pollSensors();
     verify(sensor, times(1)).isTriggered();
   }
 
@@ -40,10 +40,10 @@ public class SecurityControlUnitTest {
     SecurityControlUnit controller = new SecurityControlUnit(sensors);
 
     SecurityControlUnit spy = spy(controller);
-    LocalDateTime night = LocalDateTime.of(2017, 05, 14, 23, 00, 00);
+    LocalDateTime night = LocalDateTime.now().withHour(23).withMinute(00).withSecond(00);
     doReturn(night).when(spy).currentTime();
 
-    controller.pollSensors();
+    spy.pollSensors();
     verify(sensor, times(0)).isTriggered();
   }
 
