@@ -15,7 +15,7 @@ public class App {
     ControlUnit controlUnit = new ControlUnit(sensors);
 
     List<Sensor> securitySensors = new ArrayList<>();
-    securitySensors.add(new MotionSensor());
+    securitySensors.add(new MotionSensor(Arrays.asList(new NoiseStrategy())));
     ControlUnit securityControlUnit = new SecurityControlUnit(securitySensors);
 
     Scanner scanner = new Scanner(System.in);

@@ -2,6 +2,7 @@ import org.junit.Test;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.mockito.Mockito.*;
@@ -12,7 +13,7 @@ public class SecurityControlUnitTest {
   @Test
   public void testConstructor() {
     List<Sensor> sensors = new ArrayList<>();
-    sensors.add(new MotionSensor());
+    sensors.add(new MotionSensor(Arrays.asList(new NoiseStrategy())));
     ControlUnit controller = new SecurityControlUnit(sensors);
     assertEquals(1, controller.sensors.size());
   }
