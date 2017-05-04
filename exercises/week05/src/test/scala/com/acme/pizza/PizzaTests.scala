@@ -1,8 +1,9 @@
 package com.acme.pizza
 
+import org.scalatest.mockito.MockitoSugar
 import org.scalatest.{BeforeAndAfter, FunSuite}
 
-class PizzaTests extends FunSuite with BeforeAndAfter {
+class PizzaTests extends FunSuite with MockitoSugar with BeforeAndAfter {
 
   var pizza: Pizza = _
 
@@ -24,13 +25,13 @@ class PizzaTests extends FunSuite with BeforeAndAfter {
 
   test("new pizza has zero toppings (version 2)") {
     // intentional error here; size should be 0
-    assert(pizza.getToppings.size === 1)
+    assert(pizza.getToppings.size === 0)
   }
 
   test("new pizza has zero toppings (version 3)", DatabaseTest) {
     // `expectResult` is now `assertResult`
     // expectResult(1) {
-    assertResult(1) {
+    assertResult(0) {
       pizza.getToppings.size
     }
   }
