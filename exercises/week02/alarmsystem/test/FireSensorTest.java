@@ -18,6 +18,13 @@ public class FireSensorTest {
   }
 
   @Test
+  public void testStrategyNotAlwaysActivated() {
+    int attempts = 1;
+    for(int i = 1; i <= attempts; i++) { sensor.isTriggered(); }
+    assertEquals(false, strategy.active());
+  }
+
+  @Test
   public void testIsSometimesTriggered() {
     int attempts = 20;
     int trueCount = 0;
