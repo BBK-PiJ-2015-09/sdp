@@ -10,7 +10,7 @@ public class SecurityControlUnitTest {
   @Test
   public void testConstructor() {
     List<Sensor> sensors = new ArrayList<>();
-    sensors.add(new FireSensor());
+    sensors.add(new MotionSensor());
     ControlUnit controller = new SecurityControlUnit(sensors);
     assertEquals(1, controller.sensors.size());
   }
