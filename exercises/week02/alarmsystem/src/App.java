@@ -13,6 +13,10 @@ public class App {
     sensors.add(new SmokeSensor());
     ControlUnit controlUnit = new ControlUnit(sensors);
 
+    List<Sensor> securitySensors = new ArrayList<>();
+    securitySensors.add(new MotionSensor());
+    ControlUnit securityControlUnit = new SecurityControlUnit(securitySensors);
+
     Scanner scanner = new Scanner(System.in);
     String input = "";
     while (!input.equals(EXIT)) {
@@ -20,6 +24,7 @@ public class App {
       input = scanner.nextLine();
       if (input.equals(POLL)) {
         controlUnit.pollSensors();
+        securityControlUnit.pollSensors();
       }
     }
   }
