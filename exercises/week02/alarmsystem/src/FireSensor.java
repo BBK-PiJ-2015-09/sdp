@@ -11,8 +11,9 @@ public class FireSensor implements BatterySensor {
 
   @Override
   public boolean isTriggered() {
-    for(AlarmStrategy alarm : strategies) { alarm.activate(); }
-    return trigger.call();
+    boolean triggered = trigger.call();
+    if (triggered) { for(AlarmStrategy alarm : strategies) { alarm.activate(); } }
+    return triggered;
   }
 
   @Override
