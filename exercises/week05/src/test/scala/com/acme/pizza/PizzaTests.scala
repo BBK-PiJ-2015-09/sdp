@@ -37,4 +37,15 @@ class PizzaTests extends FunSuite with BeforeAndAfter {
 
   test ("should allow removal of toppings") (pending)
 
+  test ("catching an exception 1") {
+    val thrown = intercept[Exception] {
+      pizza.boom
+    }
+    assert(thrown.getMessage === "Boom!")
+  }
+
+  test ("catching an exception 2") {
+    intercept[Exception] { pizza.boom }
+  }
+
 }
