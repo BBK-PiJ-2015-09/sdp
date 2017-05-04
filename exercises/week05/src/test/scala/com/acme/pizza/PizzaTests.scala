@@ -10,7 +10,7 @@ class PizzaTests extends FunSuite with BeforeAndAfter {
     pizza = new Pizza
   }
 
-  test("new pizza has zero toppings") {
+  ignore("new pizza has zero toppings") {
     assert(pizza.getToppings.size == 0)
   }
 
