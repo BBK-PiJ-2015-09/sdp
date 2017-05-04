@@ -1,9 +1,21 @@
 import org.junit.Test;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 
 public class SmokeSensorTest {
-  SmokeSensor sensor = new SmokeSensor();
+  AlarmStrategy strategy = new FireStrategy();
+  List<AlarmStrategy> strategies = Arrays.asList(strategy);
+  SmokeSensor sensor = new SmokeSensor(strategies);
+
+  @Test
+  public void testStrategy() {
+    int attempts = 20;
+    for(int i = 1; i <= attempts; i++) { sensor.isTriggered(); }
+    assertEquals(true, strategy.active());
+  }
 
   @Test
   public void testIsSometimesTriggered() {
