@@ -19,7 +19,11 @@ class CounterTest extends FunSuite with BeforeAndAfter {
   }
 
   test("dec") {
-    assert(counter.dec.count === 0)
+    assert(counter.dec().count === 0)
+  }
+
+  test("dec by 2") {
+    assert(counter.dec(2).count === -1)
   }
 
 }
