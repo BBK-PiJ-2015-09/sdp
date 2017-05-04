@@ -164,7 +164,9 @@ object Funcs {
     *           length is greater than 0.
     * @return the average value of the largest values in the pairs.
     */
-  def maxAverage(ls: List[(Double, Double)]): Double = ???
+  def maxAverage(ls: List[(Double, Double)]): Double = {
+    foldLeft(ls, 0.0)((sum, tuple) => sum + (if (tuple._1 > tuple._2) tuple._1 else tuple._2)) / length(ls)
+  }
 
   /**
     * variance takes a List[Double] and calculates the squared distance
