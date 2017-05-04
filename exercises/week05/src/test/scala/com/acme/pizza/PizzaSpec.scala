@@ -8,7 +8,7 @@ class PizzaSpec extends FunSpec with GivenWhenThen {
 
   describe("A Pizza") {
 
-    it("Should start with no toppings") {
+    it("Should start with no toppings", DatabaseTest) {
       Given("a new pizza")
       pizza = new Pizza
       Then("the topping count should be zero")

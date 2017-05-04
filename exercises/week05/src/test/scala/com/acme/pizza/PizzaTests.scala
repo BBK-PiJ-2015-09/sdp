@@ -27,7 +27,7 @@ class PizzaTests extends FunSuite with BeforeAndAfter {
     assert(pizza.getToppings.size === 1)
   }
 
-  test("new pizza has zero toppings (version 3)") {
+  test("new pizza has zero toppings (version 3)", DatabaseTest) {
     // `expectResult` is now `assertResult`
     // expectResult(1) {
     assertResult(1) {
