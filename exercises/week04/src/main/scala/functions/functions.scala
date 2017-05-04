@@ -180,5 +180,8 @@ object Funcs {
     * @param ls     : List[Double] a list of values, whose length is greater than 0.
     * @param return the variance of the input.
     */
-  def variance(ls: List[Double]): Double = ???
+  def variance(ls: List[Double]): Double = {
+    val mean = sum(ls) / length(ls)
+    sum(map(ls)(v => (v - mean ) * (v - mean))) / length(ls)
+  }
 }
