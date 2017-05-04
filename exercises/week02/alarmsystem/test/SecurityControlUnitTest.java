@@ -27,7 +27,7 @@ public class SecurityControlUnitTest {
   }
 
   @Test
-  public void testNightime() {
+  public void testNighttime() {
     List<Sensor> sensors = new ArrayList<>();
     Sensor sensor = new MotionSensor();
     sensors.add(sensor);
