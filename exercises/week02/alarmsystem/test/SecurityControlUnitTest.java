@@ -20,12 +20,14 @@ public class SecurityControlUnitTest {
   @Test
   public void testDaytime() {
     List<Sensor> sensors = new ArrayList<>();
-    Sensor sensor = new MotionSensor();
-    Sensor spy = spy(sensor);
-    LocalDateTime day = LocalDateTime.of(2017, 05, 14, 8, 00, 00);
-    when(spy.currentTime()).thenReturn(day);
+    Sensor sensor = mock(MotionSensor.class);
     sensors.add(sensor);
-    ControlUnit controller = new SecurityControlUnit(sensors);
+    SecurityControlUnit controller = new SecurityControlUnit(sensors);
+
+    SecurityControlUnit spy = spy(controller);
+    LocalDateTime night = LocalDateTime.of(2017, 05, 14, 8, 00, 00);
+    doReturn(night).when(spy).currentTime();
+
     controller.pollSensors();
     verify(sensor, times(1)).isTriggered();
   }
@@ -33,12 +35,14 @@ public class SecurityControlUnitTest {
   @Test
   public void testNighttime() {
     List<Sensor> sensors = new ArrayList<>();
-    Sensor sensor = new MotionSensor();
-    Sensor spy = spy(sensor);
-    LocalDateTime night = LocalDateTime.of(2017, 05, 14, 23, 00, 00);
-    when(spy.currentTime()).thenReturn(night);
+    Sensor sensor = mock(MotionSensor.class);
     sensors.add(sensor);
-    ControlUnit controller = new SecurityControlUnit(sensors);
+    SecurityControlUnit controller = new SecurityControlUnit(sensors);
+
+    SecurityControlUnit spy = spy(controller);
+    LocalDateTime night = LocalDateTime.of(2017, 05, 14, 23, 00, 00);
+    doReturn(night).when(spy).currentTime();
+
     controller.pollSensors();
     verify(sensor, times(0)).isTriggered();
   }
