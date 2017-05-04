@@ -1,8 +1,6 @@
 package com.acme.pizza
 
-import org.scalatest.FunSpec
-import org.scalatest.BeforeAndAfter
-import org.scalatest.GivenWhenThen
+import org.scalatest.{FunSpec, GivenWhenThen}
 
 class PizzaSpec extends FunSpec with GivenWhenThen {
 

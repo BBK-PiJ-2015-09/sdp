@@ -1,6 +1,5 @@
-package com.acme
+package com.acme.pizza
 
-import com.acme.pizza.{Pizza, Topping}
 import org.scalatest.{BeforeAndAfter, FunSuite}
 
 class PizzaTests extends FunSuite with BeforeAndAfter {
