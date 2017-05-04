@@ -4,13 +4,13 @@ public class FireStrategy implements AlarmStrategy {
 
   @Override
   public void activate() {
-    System.out.println("Calling the fire department!!!");
+    if(!active) { System.out.println("Calling the fire department!!!"); }
     active = true;
   }
 
   @Override
   public void deactivate() {
-    System.out.println("Letting the fire department know that we're OK.");
+    if(active) { System.out.println("Letting the fire department know that we're OK."); }
     active = false;
   }
 
