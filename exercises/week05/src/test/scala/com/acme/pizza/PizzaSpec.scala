@@ -42,6 +42,9 @@ class PizzaSpec extends FunSpec with GivenWhenThen {
       val t = pizza.getToppings(0)
       assert(t === new Topping("green olives"))
     }
+
+    it("should allow removal of toppings") (pending)
+
   }
 
 }
