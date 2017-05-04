@@ -147,7 +147,10 @@ object Funcs {
     * @return a List[B] containing the flattened results of applying f to all
     *         elements of ls.
     */
-  def flatMap[A, B](ls: List[A])(f: A => List[B]): List[B] = ???
+  def flatMap[A, B](ls: List[A])(f: A => List[B]): List[B] = (ls) match {
+    case hd::Nil => f(hd)
+    case hd::tl => f(hd) ::: flatMap(tl)(f)
+  }
 
   // COMBINING FUNCTIONS
 
