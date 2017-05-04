@@ -26,4 +26,8 @@ class CounterTest extends FunSuite with BeforeAndAfter {
     assert(counter.dec(2).count === -1)
   }
 
+  test("adjust") {
+    assert(counter.adjust(new Adder(1)).count === 2)
+  }
+
 }
