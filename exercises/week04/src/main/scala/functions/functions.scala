@@ -133,7 +133,10 @@ object Funcs {
     * @param f  : A => Boolean the predicate
     * @return the filtered list.
     */
-  def filter[A](ls: List[A])(f: A => Boolean): List[A] = ???
+  def filter[A](ls: List[A])(f: A => Boolean): List[A] = (ls) match {
+    case _::Nil => ls
+    case hd::tl => if (f(hd)) hd :: filter(tl)(f) else filter(tl)(f)
+  }
 
   /**
     * flatMap is very similar to map. However, the function returns a List,
