@@ -40,4 +40,12 @@ class FilmTest extends FunSuite with BeforeAndAfter {
     assert(!film.isDirectedBy(new Director("Steven", "Spielberg", 1946)))
   }
 
+  test("copy") {
+    val copy = film.copy(name: "Best Film Ever")
+    assert(copy.name() === "Best Film Ever")
+    assert(copy.yearOfRelease() === 2000)
+    assert(copy.imdbRating() === 9.9)
+    assert(copy.isDirectedBy(director))
+  }
+
 }
