@@ -36,4 +36,8 @@ class FilmTest extends FunSuite with BeforeAndAfter {
     assert(film.isDirectedBy(director))
   }
 
+  test("isNotDirectedBy") {
+    assert(!film.isDirectedBy(new Director("Steven", "Spielberg", 1946)))
+  }
+
 }
