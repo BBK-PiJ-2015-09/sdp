@@ -19,7 +19,7 @@ class DirectorTest extends FunSuite with BeforeAndAfter {
   }
 
   test("dateOfBirth") {
-    assert(director.dateOfBirth() === "John Smith")
+    assert(director.dateOfBirth() === 1990)
   }
 
   test("name") {
