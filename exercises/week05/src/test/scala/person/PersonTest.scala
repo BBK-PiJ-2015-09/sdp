@@ -22,4 +22,10 @@ class PersonTest extends FunSuite with BeforeAndAfter {
     assert(person.fullName() === "John Smith")
   }
 
+  test("create from fullName") {
+    person = Person("Jane Smith")
+    assert(person.firstName() === "Jane")
+    assert(person.lastName() === "Smith")
+  }
+
 }
