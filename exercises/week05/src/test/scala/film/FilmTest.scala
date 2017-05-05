@@ -15,19 +15,19 @@ class FilmTest extends FunSuite with BeforeAndAfter {
   }
 
   test("name") {
-    assert(film.name() === "Almost Famous")
+    assert(film.name === "Almost Famous")
   }
 
   test("yearOfRelease") {
-    assert(film.yearOfRelease() === 2000)
+    assert(film.yearOfRelease === 2000)
   }
 
   test("imdbRating") {
-    assert(film.imdbRating() === 9.9)
+    assert(film.imdbRating === 9.9)
   }
 
   test("director") {
-    assert(film.director() === director)
+    assert(film.director === director)
   }
 
   test("directorsAge") {
@@ -44,17 +44,17 @@ class FilmTest extends FunSuite with BeforeAndAfter {
 
   test("copy") {
     val copy = film.copy("Best Film Ever")
-    assert(copy.name() === "Best Film Ever")
-    assert(copy.yearOfRelease() === 2000)
-    assert(copy.imdbRating() === 9.9)
+    assert(copy.name === "Best Film Ever")
+    assert(copy.yearOfRelease === 2000)
+    assert(copy.imdbRating === 9.9)
     assert(copy.isDirectedBy(director))
   }
 
   test("copycopycopy") {
     val copy = film.copy().copy().copy()
-    assert(copy.name() === "Almost Famous")
-    assert(copy.yearOfRelease() === 2000)
-    assert(copy.imdbRating() === 9.9)
+    assert(copy.name === "Almost Famous")
+    assert(copy.yearOfRelease === 2000)
+    assert(copy.imdbRating === 9.9)
     assert(copy.isDirectedBy(director))
   }
 
