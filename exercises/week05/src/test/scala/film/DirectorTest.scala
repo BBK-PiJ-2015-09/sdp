@@ -11,15 +11,15 @@ class DirectorTest extends FunSuite with BeforeAndAfter {
   }
 
   test("firstName") {
-    assert(director.firstName() === "John")
+    assert(director.firstName === "John")
   }
 
   test("lastName") {
-    assert(director.lastName() === "Smith")
+    assert(director.lastName === "Smith")
   }
 
   test("dateOfBirth") {
-    assert(director.dateOfBirth() === 1990)
+    assert(director.dateOfBirth === 1990)
   }
 
   test("name") {
