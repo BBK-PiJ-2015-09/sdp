@@ -1,7 +1,7 @@
 package factory
 
 class ConcreteCreator extends Creator {
-  override def factory() : Product = {
-    new ConcreteProduct()
+  override def factory(klass: AnyRef) : Product = klass match {
+    case _ => new ConcreteProduct()
   }
 }
