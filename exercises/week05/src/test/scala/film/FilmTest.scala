@@ -41,7 +41,7 @@ class FilmTest extends FunSuite with BeforeAndAfter {
   }
 
   test("copy") {
-    val copy = film.copy(name: "Best Film Ever")
+    val copy = film.copy("Best Film Ever")
     assert(copy.name() === "Best Film Ever")
     assert(copy.yearOfRelease() === 2000)
     assert(copy.imdbRating() === 9.9)
