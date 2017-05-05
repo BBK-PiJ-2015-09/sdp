@@ -11,3 +11,18 @@ class Film(_name: String, _yearOfRelease: Int, _imdbRating: Double, _director: D
     new Film(_name, _yearOfRelease, _imdbRating, _director)
   }
 }
+
+
+object Film {
+  def apply(name: String, yearOfRelease: Int, imdbRating: Double, director: Director): Film = {
+    new Film(name, yearOfRelease, imdbRating, director)
+  }
+
+  def highestRating(a : Film, b : Film) = {
+    if (a.imdbRating > b.imdbRating) a else b
+  }
+
+  def oldestDirectorAtTheTime(a : Film, b : Film) = {
+    if (a.directorsAge > b.directorsAge) a else b
+  }
+}
