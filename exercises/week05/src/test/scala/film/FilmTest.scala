@@ -48,4 +48,12 @@ class FilmTest extends FunSuite with BeforeAndAfter {
     assert(copy.isDirectedBy(director))
   }
 
+  test("copycopycopy") {
+    val copy = film.copy().copy().copy()
+    assert(copy.name() === "Almost Famous")
+    assert(copy.yearOfRelease() === 2000)
+    assert(copy.imdbRating() === 9.9)
+    assert(copy.isDirectedBy(director))
+  }
+
 }
