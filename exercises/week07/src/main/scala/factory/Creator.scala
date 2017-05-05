@@ -1,5 +1,5 @@
 package factory
 
 trait Creator {
-  def factory(klass: AnyRef) : Product
+  def factory(situation: String) : Product
 }
