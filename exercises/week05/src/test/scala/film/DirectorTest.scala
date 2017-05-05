@@ -26,4 +26,12 @@ class DirectorTest extends FunSuite with BeforeAndAfter {
     assert(director.name() === "John Smith")
   }
 
+  test("companion object") {
+    assert(Director("John", "Smith", 1990).name === "John Smith")
+  }
+
+  test("older") {
+    assert(Director.older(director, Director("Jane", "Smith", 1992)).name === "John Smith")
+  }
+
 }
