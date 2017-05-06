@@ -11,12 +11,12 @@ object TestDecoratorPattern {
     pizza = new GreenOlives(pizza)
     pizza = new Spinach(pizza)
     print(pizza)
-    
-    pizza = new SimplyNonVegPizza
-    pizza = new Meat(pizza)
-    pizza = new Cheese(pizza)
-    pizza = new Ham(pizza)
-    print(pizza)
+
+//    pizza = new SimplyNonVegPizza
+//    pizza = new Meat(pizza)
+//    pizza = new Cheese(pizza)
+//    pizza = new Ham(pizza)
+//    print(pizza)
   }
 
   private def print(pizza: Pizza) {
