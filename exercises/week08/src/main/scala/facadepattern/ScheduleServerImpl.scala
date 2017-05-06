@@ -1,7 +1,5 @@
 package facadepattern
 
-//TODO
-
 case class ScheduleServerImpl() extends ScheduleServer {
   override def startBooting: Unit = { println("Booting...") }
 
