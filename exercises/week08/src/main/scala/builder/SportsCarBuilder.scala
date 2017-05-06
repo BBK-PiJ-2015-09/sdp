@@ -13,7 +13,7 @@ object SportsCarBuilder extends CarBuilder {
 
   override def buildEngine: String = { "3.6L V 6 DOHC and variable valve timing" }
 
-  override def buildBrakes: String = { "Four-wheel disc brakes: two ventilated. Electronic brake distribution. Stability control" }
+  override def buildBreaks: String = { "Four-wheel disc brakes: two ventilated. Electronic brake distribution. Stability control" }
 
   override def buildSeats: String = {
     """Seats: Driver sports front seat with one power adjustments manual height,
