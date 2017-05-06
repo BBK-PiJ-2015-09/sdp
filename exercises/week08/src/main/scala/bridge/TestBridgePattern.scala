@@ -13,21 +13,21 @@ object TestBridgePattern {
     car.printDetails
     println()
 
-//    car = BigWheel(product2, "BigWheel xz model")
-//    car.produceProduct
-//    car.assemble
-//    car.printDetails
-//    println()
-//
-//    car = Motoren(product, "Motoren lm model")
-//    car.produceProduct
-//    car.assemble
-//    car.printDetails
-//    println()
-//
-//    car = Motoren(product2, "Motoren lm model")
-//    car.produceProduct
-//    car.assemble
-//    car.printDetails
+    car = BigWheel(product2, "BigWheel xz model")
+    car.produceProduct
+    car.assemble
+    car.printDetails
+    println()
+
+    car = Motoren(product, "Motoren lm model")
+    car.produceProduct
+    car.assemble
+    car.printDetails
+    println()
+
+    car = Motoren(product2, "Motoren lm model")
+    car.produceProduct
+    car.assemble
+    car.printDetails
   }
 }
