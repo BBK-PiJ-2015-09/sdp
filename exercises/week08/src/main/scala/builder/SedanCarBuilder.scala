@@ -12,7 +12,7 @@ object SedanCarBuilder extends CarBuilder {
 
   override def buildEngine: String = {  "3.5L Duramax V 6 DOHC" }
 
-  override def buildBreaks: String = { "Four-wheel disc brakes: two ventilated. Electronic brake distribution" }
+  override def buildBrakes: String = { "Four-wheel disc brakes: two ventilated. Electronic brake distribution" }
 
   override def buildSeats: String = { "Front seat centre armrest.Rear seat centre armrest.Split-folding rear seats" }
 

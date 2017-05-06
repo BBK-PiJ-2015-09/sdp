@@ -61,7 +61,7 @@ case class Car(var carType: String) {
     sb.append(power)
     sb.append("\n Engine: ")
     sb.append(engine)
-    sb.append("\n Breaks: ")
+    sb.append("\n Brakes: ")
     sb.append(breaks)
     sb.append("\n Seats: ")
     sb.append(seats)

@@ -8,7 +8,7 @@ case class CarDirector(carBuilder: CarBuilder) {
     car.setBodyStyle(carBuilder.buildBodyStyle.toString)
     car.setPower(carBuilder.buildPower.toString)
     car.setEngine(carBuilder.buildEngine.toString)
-    car.setBreaks(carBuilder.buildBreaks.toString)
+    car.setBreaks(carBuilder.buildBrakes.toString)
     car.setSeats(carBuilder.buildSeats.toString)
     car.setWindows(carBuilder.buildWindows.toString)
     car.setFuelType(carBuilder.buildFuelType.toString)

@@ -7,7 +7,7 @@ trait CarBuilder {
 
   def buildEngine : String
 
-  def buildBreaks : String
+  def buildBrakes : String
 
   def buildSeats : String
 
