@@ -1,9 +1,9 @@
 package bridge
 
 case class Motoren(product: Product, s: String) extends Car(product, s) {
-  override def assemble: Unit = {
-    println("Modifying " + product.productName + " according to " + s)
-    println("Assembling " + product.productName + " for " + s)
+  override def assemble: Unit = product.productName match {
+      case "Central Locking System" => CentralLockingBridge.assemble(product, s)
+      case "Gear Locking System" => GearLockingBridge.assemble(product, s)
   }
 
   override def produceProduct: Unit = {
