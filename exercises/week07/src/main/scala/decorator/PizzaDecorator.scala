@@ -1,7 +1,7 @@
 package decorator
 
-public abstract class PizzaDecorator extends Pizza {
-  abstract def getDesc: String
+abstract class PizzaDecorator extends Pizza {
+  def getDesc: String
 
-  abstract def getPrice: Double
+  def getPrice: Double
 }
