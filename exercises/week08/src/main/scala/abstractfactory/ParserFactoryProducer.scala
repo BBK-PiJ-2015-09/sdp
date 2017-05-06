@@ -1,8 +1,12 @@
 package abstractfactory
 
 object ParserFactoryProducer {
-  def getFactory(s: String) = ???
-
-  // TODO
+  def getFactory(s: String): AbstractParserFactory = {
+    if (s == "NYCFactory") {
+      new NYCParserFactory()
+    } else {
+      new LondonParserFactory()
+    }
+  }
 
 }
