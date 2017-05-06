@@ -1,6 +1,8 @@
 package bridge
 
 object TestBridgePattern {
+  // 9. The Bridge pattern should be used when a class and its behaviour are likely to change a lot.
+
   def main(args: Array[String]) {
     val product: Product = CentralLocking("Central Locking System")
     val product2: Product = GearLocking("Gear Locking System")
