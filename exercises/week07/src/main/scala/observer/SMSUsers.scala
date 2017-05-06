@@ -9,5 +9,7 @@ case class SMSUsers(s: Subject, msg: String) extends Observer {
     s.subscribeObserver(this)
   }
 
-  def unSubscribe() = ???
+  def unSubscribe(): Unit = {
+    s.unSubscribeObserver(this)
+  }
 }

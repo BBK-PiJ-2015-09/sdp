@@ -4,6 +4,7 @@ import scala.collection.mutable.ListBuffer
 
 object TestObserver extends App {
     val subject: Subject = new CommentaryObject(ListBuffer[Observer](), "Soccer Match [2014AUG24]")
+    println(subject.subjectDetails)
 
     val observer: Observer = new SMSUsers(subject, "Adam Warner [New York]")
     observer.subscribe
