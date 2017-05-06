@@ -5,7 +5,7 @@ object TestFacade {
   // behind a wrapper object.
   // b) You might use this when attempting to update a legacy system - you could immediately add the interface
   // you want, and then gradually refactor the implementation behind the facade.
-  
+
   def main(args: Array[String]) {
     val scheduleServer: ScheduleServer = ScheduleServerImpl()
     val facadeServer: ScheduleServerFacade = ScheduleServerFacade(scheduleServer)

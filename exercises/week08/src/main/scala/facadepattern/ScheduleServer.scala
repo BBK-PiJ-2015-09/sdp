@@ -15,13 +15,13 @@ trait ScheduleServer {
 
   def releaseProcesses
 
-  def destory
+  def destroy
 
   def destroySystemObjects
 
-  def destoryListeners
+  def destroyListeners
 
-  def destoryContext
+  def destroyContext
 
   def shutdown
 }
