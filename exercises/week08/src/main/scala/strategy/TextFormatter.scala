@@ -1,5 +1,5 @@
 package strategy
 
 trait TextFormatter {
-  def format(text: String)
+  def format(text: String) : String
 }
