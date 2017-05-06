@@ -10,12 +10,12 @@ object TestBuilderPattern {
     var director: CarDirector = CarDirector(carBuilder)
 
     director.build
-    println(carBuilder.getCar)
+    println(director.getCar)
 
     carBuilder = SportsCarBuilder
     director = CarDirector(carBuilder)
 
     director.build
-    println(carBuilder.getCar)
+    println(director.getCar)
   }
 }
